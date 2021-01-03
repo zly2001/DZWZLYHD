@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.WorkcardescMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Workcardesc" >
+    <id column="workcarjlid" property="workcarjlid" jdbcType="INTEGER" />
+    <result column="inid" property="inid" jdbcType="VARCHAR" />
+    <result column="wid" property="wid" jdbcType="INTEGER" />
+    <result column="workcarfirstdate" property="workcarfirstdate" jdbcType="DATE" />
+    <result column="workcarenddate" property="workcarenddate" jdbcType="DATE" />
+    <result column="firstaddress" property="firstaddress" jdbcType="VARCHAR" />
+    <result column="endaddress" property="endaddress" jdbcType="VARCHAR" />
+    <result column="zgls" property="zgls" jdbcType="REAL" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    workcarjlid, inid, wid, workcarfirstdate, workcarenddate, firstaddress, endaddress, 
+    zgls, type, column1, column2, column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from workcardesc
+    where workcarjlid = #{workcarjlid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from workcardesc
+    where workcarjlid = #{workcarjlid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Workcardesc" >
+    insert into workcardesc (workcarjlid, inid, wid, 
+      workcarfirstdate, workcarenddate, firstaddress, 
+      endaddress, zgls, type, 
+      column1, column2, column3, 
+      column4)
+    values (#{workcarjlid,jdbcType=INTEGER}, #{inid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, 
+      #{workcarfirstdate,jdbcType=DATE}, #{workcarenddate,jdbcType=DATE}, #{firstaddress,jdbcType=VARCHAR}, 
+      #{endaddress,jdbcType=VARCHAR}, #{zgls,jdbcType=REAL}, #{type,jdbcType=INTEGER}, 
+      #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, 
+      #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Workcardesc" >
+    insert into workcardesc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workcarjlid != null" >
+        workcarjlid,
+      </if>
+      <if test="inid != null" >
+        inid,
+      </if>
+      <if test="wid != null" >
+        wid,
+      </if>
+      <if test="workcarfirstdate != null" >
+        workcarfirstdate,
+      </if>
+      <if test="workcarenddate != null" >
+        workcarenddate,
+      </if>
+      <if test="firstaddress != null" >
+        firstaddress,
+      </if>
+      <if test="endaddress != null" >
+        endaddress,
+      </if>
+      <if test="zgls != null" >
+        zgls,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workcarjlid != null" >
+        #{workcarjlid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null" >
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="workcarfirstdate != null" >
+        #{workcarfirstdate,jdbcType=DATE},
+      </if>
+      <if test="workcarenddate != null" >
+        #{workcarenddate,jdbcType=DATE},
+      </if>
+      <if test="firstaddress != null" >
+        #{firstaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endaddress != null" >
+        #{endaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zgls != null" >
+        #{zgls,jdbcType=REAL},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Workcardesc" >
+    update workcardesc
+    <set >
+      <if test="inid != null" >
+        inid = #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null" >
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="workcarfirstdate != null" >
+        workcarfirstdate = #{workcarfirstdate,jdbcType=DATE},
+      </if>
+      <if test="workcarenddate != null" >
+        workcarenddate = #{workcarenddate,jdbcType=DATE},
+      </if>
+      <if test="firstaddress != null" >
+        firstaddress = #{firstaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endaddress != null" >
+        endaddress = #{endaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zgls != null" >
+        zgls = #{zgls,jdbcType=REAL},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where workcarjlid = #{workcarjlid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Workcardesc" >
+    update workcardesc
+    set inid = #{inid,jdbcType=VARCHAR},
+      wid = #{wid,jdbcType=INTEGER},
+      workcarfirstdate = #{workcarfirstdate,jdbcType=DATE},
+      workcarenddate = #{workcarenddate,jdbcType=DATE},
+      firstaddress = #{firstaddress,jdbcType=VARCHAR},
+      endaddress = #{endaddress,jdbcType=VARCHAR},
+      zgls = #{zgls,jdbcType=REAL},
+      type = #{type,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where workcarjlid = #{workcarjlid,jdbcType=INTEGER}
+  </update>
+</mapper>

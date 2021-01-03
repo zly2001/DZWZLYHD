@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.ArtisanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Artisan" >
+    <id column="artisanid" property="artisanid" jdbcType="INTEGER" />
+    <id column="arzday" property="arzday" jdbcType="DATE" />
+    <result column="aphone" property="aphone" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="asex" property="asex" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="acaid" property="acaid" jdbcType="VARCHAR" />
+    <result column="acraft" property="acraft" jdbcType="VARCHAR" />
+    <result column="azt" property="azt" jdbcType="INTEGER" />
+    <result column="alzyy" property="alzyy" jdbcType="VARCHAR" />
+    <result column="alzday" property="alzday" jdbcType="DATE" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    artisanid, arzday, aphone, sid, tid, aname, asex, address, acaid, acraft, azt, alzyy, 
+    alzday, column1, column2, column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.accp.entity.ArtisanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from artisan
+    where artisanid = #{artisanid,jdbcType=INTEGER}
+      and arzday = #{arzday,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.accp.entity.ArtisanKey" >
+    delete from artisan
+    where artisanid = #{artisanid,jdbcType=INTEGER}
+      and arzday = #{arzday,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Artisan" >
+    insert into artisan (artisanid, arzday, aphone, 
+      sid, tid, aname, asex, 
+      address, acaid, acraft, 
+      azt, alzyy, alzday, column1, 
+      column2, column3, column4
+      )
+    values (#{artisanid,jdbcType=INTEGER}, #{arzday,jdbcType=DATE}, #{aphone,jdbcType=VARCHAR}, 
+      #{sid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{asex,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{acaid,jdbcType=VARCHAR}, #{acraft,jdbcType=VARCHAR}, 
+      #{azt,jdbcType=INTEGER}, #{alzyy,jdbcType=VARCHAR}, #{alzday,jdbcType=DATE}, #{column1,jdbcType=VARCHAR}, 
+      #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Artisan" >
+    insert into artisan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="artisanid != null" >
+        artisanid,
+      </if>
+      <if test="arzday != null" >
+        arzday,
+      </if>
+      <if test="aphone != null" >
+        aphone,
+      </if>
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+      <if test="asex != null" >
+        asex,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="acaid != null" >
+        acaid,
+      </if>
+      <if test="acraft != null" >
+        acraft,
+      </if>
+      <if test="azt != null" >
+        azt,
+      </if>
+      <if test="alzyy != null" >
+        alzyy,
+      </if>
+      <if test="alzday != null" >
+        alzday,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="artisanid != null" >
+        #{artisanid,jdbcType=INTEGER},
+      </if>
+      <if test="arzday != null" >
+        #{arzday,jdbcType=DATE},
+      </if>
+      <if test="aphone != null" >
+        #{aphone,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="asex != null" >
+        #{asex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="acaid != null" >
+        #{acaid,jdbcType=VARCHAR},
+      </if>
+      <if test="acraft != null" >
+        #{acraft,jdbcType=VARCHAR},
+      </if>
+      <if test="azt != null" >
+        #{azt,jdbcType=INTEGER},
+      </if>
+      <if test="alzyy != null" >
+        #{alzyy,jdbcType=VARCHAR},
+      </if>
+      <if test="alzday != null" >
+        #{alzday,jdbcType=DATE},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Artisan" >
+    update artisan
+    <set >
+      <if test="aphone != null" >
+        aphone = #{aphone,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="asex != null" >
+        asex = #{asex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="acaid != null" >
+        acaid = #{acaid,jdbcType=VARCHAR},
+      </if>
+      <if test="acraft != null" >
+        acraft = #{acraft,jdbcType=VARCHAR},
+      </if>
+      <if test="azt != null" >
+        azt = #{azt,jdbcType=INTEGER},
+      </if>
+      <if test="alzyy != null" >
+        alzyy = #{alzyy,jdbcType=VARCHAR},
+      </if>
+      <if test="alzday != null" >
+        alzday = #{alzday,jdbcType=DATE},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where artisanid = #{artisanid,jdbcType=INTEGER}
+      and arzday = #{arzday,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Artisan" >
+    update artisan
+    set aphone = #{aphone,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=INTEGER},
+      aname = #{aname,jdbcType=VARCHAR},
+      asex = #{asex,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      acaid = #{acaid,jdbcType=VARCHAR},
+      acraft = #{acraft,jdbcType=VARCHAR},
+      azt = #{azt,jdbcType=INTEGER},
+      alzyy = #{alzyy,jdbcType=VARCHAR},
+      alzday = #{alzday,jdbcType=DATE},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where artisanid = #{artisanid,jdbcType=INTEGER}
+      and arzday = #{arzday,jdbcType=DATE}
+  </update>
+</mapper>

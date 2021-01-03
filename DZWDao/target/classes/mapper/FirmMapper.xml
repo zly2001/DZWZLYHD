@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.FirmMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Firm" >
+    <id column="firmid" property="firmid" jdbcType="INTEGER" />
+    <result column="firmname" property="firmname" jdbcType="VARCHAR" />
+    <result column="faddress" property="faddress" jdbcType="VARCHAR" />
+    <result column="fphone" property="fphone" jdbcType="VARCHAR" />
+    <result column="lxr" property="lxr" jdbcType="VARCHAR" />
+    <result column="lphone" property="lphone" jdbcType="VARCHAR" />
+    <result column="fsevenst" property="fsevenst" jdbcType="VARCHAR" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    firmid, firmname, faddress, fphone, lxr, lphone, fsevenst, column1, column2, column3, 
+    column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from firm
+    where firmid = #{firmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from firm
+    where firmid = #{firmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Firm" >
+    insert into firm (firmid, firmname, faddress, 
+      fphone, lxr, lphone, 
+      fsevenst, column1, column2, 
+      column3, column4)
+    values (#{firmid,jdbcType=INTEGER}, #{firmname,jdbcType=VARCHAR}, #{faddress,jdbcType=VARCHAR}, 
+      #{fphone,jdbcType=VARCHAR}, #{lxr,jdbcType=VARCHAR}, #{lphone,jdbcType=VARCHAR}, 
+      #{fsevenst,jdbcType=VARCHAR}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
+      #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Firm" >
+    insert into firm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="firmid != null" >
+        firmid,
+      </if>
+      <if test="firmname != null" >
+        firmname,
+      </if>
+      <if test="faddress != null" >
+        faddress,
+      </if>
+      <if test="fphone != null" >
+        fphone,
+      </if>
+      <if test="lxr != null" >
+        lxr,
+      </if>
+      <if test="lphone != null" >
+        lphone,
+      </if>
+      <if test="fsevenst != null" >
+        fsevenst,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="firmid != null" >
+        #{firmid,jdbcType=INTEGER},
+      </if>
+      <if test="firmname != null" >
+        #{firmname,jdbcType=VARCHAR},
+      </if>
+      <if test="faddress != null" >
+        #{faddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fphone != null" >
+        #{fphone,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="lphone != null" >
+        #{lphone,jdbcType=VARCHAR},
+      </if>
+      <if test="fsevenst != null" >
+        #{fsevenst,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Firm" >
+    update firm
+    <set >
+      <if test="firmname != null" >
+        firmname = #{firmname,jdbcType=VARCHAR},
+      </if>
+      <if test="faddress != null" >
+        faddress = #{faddress,jdbcType=VARCHAR},
+      </if>
+      <if test="fphone != null" >
+        fphone = #{fphone,jdbcType=VARCHAR},
+      </if>
+      <if test="lxr != null" >
+        lxr = #{lxr,jdbcType=VARCHAR},
+      </if>
+      <if test="lphone != null" >
+        lphone = #{lphone,jdbcType=VARCHAR},
+      </if>
+      <if test="fsevenst != null" >
+        fsevenst = #{fsevenst,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where firmid = #{firmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Firm" >
+    update firm
+    set firmname = #{firmname,jdbcType=VARCHAR},
+      faddress = #{faddress,jdbcType=VARCHAR},
+      fphone = #{fphone,jdbcType=VARCHAR},
+      lxr = #{lxr,jdbcType=VARCHAR},
+      lphone = #{lphone,jdbcType=VARCHAR},
+      fsevenst = #{fsevenst,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where firmid = #{firmid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.ItemstypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Itemstype" >
+    <id column="itemsTypeid" property="itemstypeid" jdbcType="INTEGER" />
+    <result column="itemstypename" property="itemstypename" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    itemsTypeid, itemstypename, type, column1, column2, column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from itemstype
+    where itemsTypeid = #{itemstypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from itemstype
+    where itemsTypeid = #{itemstypeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Itemstype" >
+    insert into itemstype (itemsTypeid, itemstypename, type, 
+      column1, column2, column3, 
+      column4)
+    values (#{itemstypeid,jdbcType=INTEGER}, #{itemstypename,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, 
+      #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Itemstype" >
+    insert into itemstype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemstypeid != null" >
+        itemsTypeid,
+      </if>
+      <if test="itemstypename != null" >
+        itemstypename,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemstypeid != null" >
+        #{itemstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="itemstypename != null" >
+        #{itemstypename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Itemstype" >
+    update itemstype
+    <set >
+      <if test="itemstypename != null" >
+        itemstypename = #{itemstypename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where itemsTypeid = #{itemstypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Itemstype" >
+    update itemstype
+    set itemstypename = #{itemstypename,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where itemsTypeid = #{itemstypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

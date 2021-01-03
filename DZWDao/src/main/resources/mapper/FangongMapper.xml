@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.FangongMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Fangong" >
+    <id column="fid" property="fid" jdbcType="INTEGER" />
+    <result column="inid" property="inid" jdbcType="VARCHAR" />
+    <result column="wugongtypeid" property="wugongtypeid" jdbcType="INTEGER" />
+    <result column="fprice" property="fprice" jdbcType="REAL" />
+    <result column="fdesc" property="fdesc" jdbcType="VARCHAR" />
+    <result column="fangongdate" property="fangongdate" jdbcType="DATE" />
+    <result column="fangongtype" property="fangongtype" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, inid, wugongtypeid, fprice, fdesc, fangongdate, fangongtype, column1, column2, 
+    column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fangong
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fangong
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Fangong" >
+    insert into fangong (fid, inid, wugongtypeid, 
+      fprice, fdesc, fangongdate, 
+      fangongtype, column1, column2, 
+      column3, column4)
+    values (#{fid,jdbcType=INTEGER}, #{inid,jdbcType=VARCHAR}, #{wugongtypeid,jdbcType=INTEGER}, 
+      #{fprice,jdbcType=REAL}, #{fdesc,jdbcType=VARCHAR}, #{fangongdate,jdbcType=DATE}, 
+      #{fangongtype,jdbcType=INTEGER}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
+      #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Fangong" >
+    insert into fangong
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="inid != null" >
+        inid,
+      </if>
+      <if test="wugongtypeid != null" >
+        wugongtypeid,
+      </if>
+      <if test="fprice != null" >
+        fprice,
+      </if>
+      <if test="fdesc != null" >
+        fdesc,
+      </if>
+      <if test="fangongdate != null" >
+        fangongdate,
+      </if>
+      <if test="fangongtype != null" >
+        fangongtype,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="wugongtypeid != null" >
+        #{wugongtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="fprice != null" >
+        #{fprice,jdbcType=REAL},
+      </if>
+      <if test="fdesc != null" >
+        #{fdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fangongdate != null" >
+        #{fangongdate,jdbcType=DATE},
+      </if>
+      <if test="fangongtype != null" >
+        #{fangongtype,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Fangong" >
+    update fangong
+    <set >
+      <if test="inid != null" >
+        inid = #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="wugongtypeid != null" >
+        wugongtypeid = #{wugongtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="fprice != null" >
+        fprice = #{fprice,jdbcType=REAL},
+      </if>
+      <if test="fdesc != null" >
+        fdesc = #{fdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fangongdate != null" >
+        fangongdate = #{fangongdate,jdbcType=DATE},
+      </if>
+      <if test="fangongtype != null" >
+        fangongtype = #{fangongtype,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Fangong" >
+    update fangong
+    set inid = #{inid,jdbcType=VARCHAR},
+      wugongtypeid = #{wugongtypeid,jdbcType=INTEGER},
+      fprice = #{fprice,jdbcType=REAL},
+      fdesc = #{fdesc,jdbcType=VARCHAR},
+      fangongdate = #{fangongdate,jdbcType=DATE},
+      fangongtype = #{fangongtype,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>

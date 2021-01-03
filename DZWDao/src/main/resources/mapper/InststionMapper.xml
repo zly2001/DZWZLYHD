@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.InststionMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Inststion" >
+    <id column="inid" property="inid" jdbcType="VARCHAR" />
+    <result column="wid" property="wid" jdbcType="INTEGER" />
+    <result column="statusid" property="statusid" jdbcType="INTEGER" />
+    <result column="casid" property="casid" jdbcType="VARCHAR" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="workcarjlid" property="workcarjlid" jdbcType="INTEGER" />
+    <result column="cno" property="cno" jdbcType="VARCHAR" />
+    <result column="izt" property="izt" jdbcType="INTEGER" />
+    <result column="jdate" property="jdate" jdbcType="DATE" />
+    <result column="jcday" property="jcday" jdbcType="DATE" />
+    <result column="yjday" property="yjday" jdbcType="DATE" />
+    <result column="wgday" property="wgday" jdbcType="DATE" />
+    <result column="iszn" property="iszn" jdbcType="INTEGER" />
+    <result column="lc" property="lc" jdbcType="INTEGER" />
+    <result column="ifjs" property="ifjs" jdbcType="INTEGER" />
+    <result column="insevent" property="insevent" jdbcType="VARCHAR" />
+    <result column="zjy" property="zjy" jdbcType="VARCHAR" />
+    <result column="zrr" property="zrr" jdbcType="VARCHAR" />
+    <result column="zhgs" property="zhgs" jdbcType="INTEGER" />
+    <result column="jyjg" property="jyjg" jdbcType="REAL" />
+    <result column="itemsid" property="itemsid" jdbcType="VARCHAR" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    inid, wid, statusid, casid, tid, workcarjlid, cno, izt, jdate, jcday, yjday, wgday, 
+    iszn, lc, ifjs, insevent, zjy, zrr, zhgs, jyjg, itemsid, column1, column2, column3, 
+    column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from inststion
+    where inid = #{inid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from inststion
+    where inid = #{inid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Inststion" >
+    insert into inststion (inid, wid, statusid, 
+      casid, tid, workcarjlid, 
+      cno, izt, jdate, jcday, 
+      yjday, wgday, iszn, lc, 
+      ifjs, insevent, zjy, 
+      zrr, zhgs, jyjg, itemsid, 
+      column1, column2, column3, 
+      column4)
+    values (#{inid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER}, #{statusid,jdbcType=INTEGER}, 
+      #{casid,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, #{workcarjlid,jdbcType=INTEGER}, 
+      #{cno,jdbcType=VARCHAR}, #{izt,jdbcType=INTEGER}, #{jdate,jdbcType=DATE}, #{jcday,jdbcType=DATE}, 
+      #{yjday,jdbcType=DATE}, #{wgday,jdbcType=DATE}, #{iszn,jdbcType=INTEGER}, #{lc,jdbcType=INTEGER}, 
+      #{ifjs,jdbcType=INTEGER}, #{insevent,jdbcType=VARCHAR}, #{zjy,jdbcType=VARCHAR}, 
+      #{zrr,jdbcType=VARCHAR}, #{zhgs,jdbcType=INTEGER}, #{jyjg,jdbcType=REAL}, #{itemsid,jdbcType=VARCHAR}, 
+      #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, 
+      #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Inststion" >
+    insert into inststion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inid != null" >
+        inid,
+      </if>
+      <if test="wid != null" >
+        wid,
+      </if>
+      <if test="statusid != null" >
+        statusid,
+      </if>
+      <if test="casid != null" >
+        casid,
+      </if>
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="workcarjlid != null" >
+        workcarjlid,
+      </if>
+      <if test="cno != null" >
+        cno,
+      </if>
+      <if test="izt != null" >
+        izt,
+      </if>
+      <if test="jdate != null" >
+        jdate,
+      </if>
+      <if test="jcday != null" >
+        jcday,
+      </if>
+      <if test="yjday != null" >
+        yjday,
+      </if>
+      <if test="wgday != null" >
+        wgday,
+      </if>
+      <if test="iszn != null" >
+        iszn,
+      </if>
+      <if test="lc != null" >
+        lc,
+      </if>
+      <if test="ifjs != null" >
+        ifjs,
+      </if>
+      <if test="insevent != null" >
+        insevent,
+      </if>
+      <if test="zjy != null" >
+        zjy,
+      </if>
+      <if test="zrr != null" >
+        zrr,
+      </if>
+      <if test="zhgs != null" >
+        zhgs,
+      </if>
+      <if test="jyjg != null" >
+        jyjg,
+      </if>
+      <if test="itemsid != null" >
+        itemsid,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inid != null" >
+        #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="wid != null" >
+        #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="casid != null" >
+        #{casid,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="workcarjlid != null" >
+        #{workcarjlid,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null" >
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="izt != null" >
+        #{izt,jdbcType=INTEGER},
+      </if>
+      <if test="jdate != null" >
+        #{jdate,jdbcType=DATE},
+      </if>
+      <if test="jcday != null" >
+        #{jcday,jdbcType=DATE},
+      </if>
+      <if test="yjday != null" >
+        #{yjday,jdbcType=DATE},
+      </if>
+      <if test="wgday != null" >
+        #{wgday,jdbcType=DATE},
+      </if>
+      <if test="iszn != null" >
+        #{iszn,jdbcType=INTEGER},
+      </if>
+      <if test="lc != null" >
+        #{lc,jdbcType=INTEGER},
+      </if>
+      <if test="ifjs != null" >
+        #{ifjs,jdbcType=INTEGER},
+      </if>
+      <if test="insevent != null" >
+        #{insevent,jdbcType=VARCHAR},
+      </if>
+      <if test="zjy != null" >
+        #{zjy,jdbcType=VARCHAR},
+      </if>
+      <if test="zrr != null" >
+        #{zrr,jdbcType=VARCHAR},
+      </if>
+      <if test="zhgs != null" >
+        #{zhgs,jdbcType=INTEGER},
+      </if>
+      <if test="jyjg != null" >
+        #{jyjg,jdbcType=REAL},
+      </if>
+      <if test="itemsid != null" >
+        #{itemsid,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Inststion" >
+    update inststion
+    <set >
+      <if test="wid != null" >
+        wid = #{wid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        statusid = #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="casid != null" >
+        casid = #{casid,jdbcType=VARCHAR},
+      </if>
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="workcarjlid != null" >
+        workcarjlid = #{workcarjlid,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null" >
+        cno = #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="izt != null" >
+        izt = #{izt,jdbcType=INTEGER},
+      </if>
+      <if test="jdate != null" >
+        jdate = #{jdate,jdbcType=DATE},
+      </if>
+      <if test="jcday != null" >
+        jcday = #{jcday,jdbcType=DATE},
+      </if>
+      <if test="yjday != null" >
+        yjday = #{yjday,jdbcType=DATE},
+      </if>
+      <if test="wgday != null" >
+        wgday = #{wgday,jdbcType=DATE},
+      </if>
+      <if test="iszn != null" >
+        iszn = #{iszn,jdbcType=INTEGER},
+      </if>
+      <if test="lc != null" >
+        lc = #{lc,jdbcType=INTEGER},
+      </if>
+      <if test="ifjs != null" >
+        ifjs = #{ifjs,jdbcType=INTEGER},
+      </if>
+      <if test="insevent != null" >
+        insevent = #{insevent,jdbcType=VARCHAR},
+      </if>
+      <if test="zjy != null" >
+        zjy = #{zjy,jdbcType=VARCHAR},
+      </if>
+      <if test="zrr != null" >
+        zrr = #{zrr,jdbcType=VARCHAR},
+      </if>
+      <if test="zhgs != null" >
+        zhgs = #{zhgs,jdbcType=INTEGER},
+      </if>
+      <if test="jyjg != null" >
+        jyjg = #{jyjg,jdbcType=REAL},
+      </if>
+      <if test="itemsid != null" >
+        itemsid = #{itemsid,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where inid = #{inid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Inststion" >
+    update inststion
+    set wid = #{wid,jdbcType=INTEGER},
+      statusid = #{statusid,jdbcType=INTEGER},
+      casid = #{casid,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=INTEGER},
+      workcarjlid = #{workcarjlid,jdbcType=INTEGER},
+      cno = #{cno,jdbcType=VARCHAR},
+      izt = #{izt,jdbcType=INTEGER},
+      jdate = #{jdate,jdbcType=DATE},
+      jcday = #{jcday,jdbcType=DATE},
+      yjday = #{yjday,jdbcType=DATE},
+      wgday = #{wgday,jdbcType=DATE},
+      iszn = #{iszn,jdbcType=INTEGER},
+      lc = #{lc,jdbcType=INTEGER},
+      ifjs = #{ifjs,jdbcType=INTEGER},
+      insevent = #{insevent,jdbcType=VARCHAR},
+      zjy = #{zjy,jdbcType=VARCHAR},
+      zrr = #{zrr,jdbcType=VARCHAR},
+      zhgs = #{zhgs,jdbcType=INTEGER},
+      jyjg = #{jyjg,jdbcType=REAL},
+      itemsid = #{itemsid,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where inid = #{inid,jdbcType=VARCHAR}
+  </update>
+</mapper>

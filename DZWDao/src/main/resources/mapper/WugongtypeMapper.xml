@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.WugongtypeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Wugongtype" >
+    <id column="wugongtypeid" property="wugongtypeid" jdbcType="INTEGER" />
+    <result column="wugongtypename" property="wugongtypename" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wugongtypeid, wugongtypename, type, column1, column2, column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wugongtype
+    where wugongtypeid = #{wugongtypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wugongtype
+    where wugongtypeid = #{wugongtypeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Wugongtype" >
+    insert into wugongtype (wugongtypeid, wugongtypename, type, 
+      column1, column2, column3, 
+      column4)
+    values (#{wugongtypeid,jdbcType=INTEGER}, #{wugongtypename,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, 
+      #{column4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Wugongtype" >
+    insert into wugongtype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wugongtypeid != null" >
+        wugongtypeid,
+      </if>
+      <if test="wugongtypename != null" >
+        wugongtypename,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wugongtypeid != null" >
+        #{wugongtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="wugongtypename != null" >
+        #{wugongtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Wugongtype" >
+    update wugongtype
+    <set >
+      <if test="wugongtypename != null" >
+        wugongtypename = #{wugongtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where wugongtypeid = #{wugongtypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Wugongtype" >
+    update wugongtype
+    set wugongtypename = #{wugongtypename,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where wugongtypeid = #{wugongtypeid,jdbcType=INTEGER}
+  </update>
+</mapper>
