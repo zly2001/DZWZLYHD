@@ -23,9 +23,39 @@ import com.accp.entity.Client;
 public class ClientBiz {
 	@Resource
 	private ClientMapper client;
-	
+	/**
+	 * 查询所有用户信息
+	 * @return
+	 */
 	public List<Client> queryAllClientMessage() {
 		return client.queryAllClientMessage();
+	}
+	/**
+	 * 依据主键查询特定用户信息
+	 */
+	public Client selectClient(String clientno) {
+		return client.selectByPrimaryKey(clientno);
+	}
+	
+	/**
+	 * 新增用户信息
+	 */
+	public int insert(Client record) {
+		return client.insert(record);
+	}
+	
+	/**
+	 * 修改用户信息
+	 */
+	public int updateClient(Client record) {
+		return client.updateByPrimaryKey(record);
+	}
+	
+	/**
+	 * 删除用户信息
+	 */
+	public int deleteClient(String clientno) {
+		return client.deleteByPrimaryKey(clientno);
 	}
 
 }

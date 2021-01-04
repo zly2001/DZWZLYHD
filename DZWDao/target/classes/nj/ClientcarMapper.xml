@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.ClientcarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Clientcar" >
+    <id column="cno" property="cno" jdbcType="VARCHAR" />
+    <result column="clientno" property="clientno" jdbcType="VARCHAR" />
+    <result column="inid" property="inid" jdbcType="VARCHAR" />
+    <result column="Brandid" property="brandid" jdbcType="INTEGER" />
+    <result column="driver" property="driver" jdbcType="VARCHAR" />
+    <result column="dphone" property="dphone" jdbcType="VARCHAR" />
+    <result column="ddate" property="ddate" jdbcType="DATE" />
+    <result column="purdate" property="purdate" jdbcType="DATE" />
+    <result column="jctdate" property="jctdate" jdbcType="DATE" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cno, clientno, inid, Brandid, driver, dphone, ddate, purdate, jctdate, column1, column2, 
+    column3, column4
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from clientcar
+    where cno = #{cno,jdbcType=VARCHAR}
+  </select>
+   <select id="queryAllClientCarMessage" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from clientcar
+  
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from clientcar
+    where cno = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Clientcar" >
+    insert into clientcar (cno, clientno, inid, 
+      Brandid, driver, dphone, 
+      ddate, purdate, jctdate, column1, 
+      column2, column3, column4
+      )
+    values (#{cno,jdbcType=VARCHAR}, #{clientno,jdbcType=VARCHAR}, #{inid,jdbcType=VARCHAR}, 
+      #{brandid,jdbcType=INTEGER}, #{driver,jdbcType=VARCHAR}, #{dphone,jdbcType=VARCHAR}, 
+      #{ddate,jdbcType=DATE}, #{purdate,jdbcType=DATE}, #{jctdate,jdbcType=DATE}, #{column1,jdbcType=VARCHAR}, 
+      #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Clientcar" >
+    insert into clientcar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cno != null" >
+        cno,
+      </if>
+      <if test="clientno != null" >
+        clientno,
+      </if>
+      <if test="inid != null" >
+        inid,
+      </if>
+      <if test="brandid != null" >
+        Brandid,
+      </if>
+      <if test="driver != null" >
+        driver,
+      </if>
+      <if test="dphone != null" >
+        dphone,
+      </if>
+      <if test="ddate != null" >
+        ddate,
+      </if>
+      <if test="purdate != null" >
+        purdate,
+      </if>
+      <if test="jctdate != null" >
+        jctdate,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cno != null" >
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="clientno != null" >
+        #{clientno,jdbcType=VARCHAR},
+      </if>
+      <if test="inid != null" >
+        #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        #{brandid,jdbcType=INTEGER},
+      </if>
+      <if test="driver != null" >
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ddate != null" >
+        #{ddate,jdbcType=DATE},
+      </if>
+      <if test="purdate != null" >
+        #{purdate,jdbcType=DATE},
+      </if>
+      <if test="jctdate != null" >
+        #{jctdate,jdbcType=DATE},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Clientcar" >
+    update clientcar
+    <set >
+      <if test="clientno != null" >
+        clientno = #{clientno,jdbcType=VARCHAR},
+      </if>
+      <if test="inid != null" >
+        inid = #{inid,jdbcType=VARCHAR},
+      </if>
+      <if test="brandid != null" >
+        Brandid = #{brandid,jdbcType=INTEGER},
+      </if>
+      <if test="driver != null" >
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        dphone = #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ddate != null" >
+        ddate = #{ddate,jdbcType=DATE},
+      </if>
+      <if test="purdate != null" >
+        purdate = #{purdate,jdbcType=DATE},
+      </if>
+      <if test="jctdate != null" >
+        jctdate = #{jctdate,jdbcType=DATE},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cno = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Clientcar" >
+    update clientcar
+    set clientno = #{clientno,jdbcType=VARCHAR},
+      inid = #{inid,jdbcType=VARCHAR},
+      Brandid = #{brandid,jdbcType=INTEGER},
+      driver = #{driver,jdbcType=VARCHAR},
+      dphone = #{dphone,jdbcType=VARCHAR},
+      ddate = #{ddate,jdbcType=DATE},
+      purdate = #{purdate,jdbcType=DATE},
+      jctdate = #{jctdate,jdbcType=DATE},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where cno = #{cno,jdbcType=VARCHAR}
+  </update>
+</mapper>
