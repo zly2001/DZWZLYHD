@@ -14,7 +14,7 @@ public interface QjEmployeeMapper {
 
     Employee selectByPrimaryKey(String employeeid);
     
-    @Select("SELECT * FROM `employee` WHERE `employeeid`='1001' AND `epwd`='1001'")
+    @Select("SELECT * FROM `employee` WHERE `employeeid`=#{employeeid} AND `epwd`=#{epwd}")
     Employee selectByLogin(@Param("employeeid") String employeeid,@Param("epwd") String epwd);
 
     int updateByPrimaryKeySelective(@Param("record")Employee record);
