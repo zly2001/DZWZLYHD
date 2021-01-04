@@ -39,7 +39,7 @@
 		<!--绑定数据源  -->
 		<property name="dataSource" ref="BasicDataSource"/>
 		<!-- 读取配置文件：路径 -->
-		<property name="configLocation" value="classpath:mybatis-ctx.xml"/>
+		<property name="configLocation" value="classpath:MyBatisConfig.xml"/>
 		<!-- 绑定Mapper.xml文件 -->
 		<property name="mapperLocations">
 			<list>
