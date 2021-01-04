@@ -60,7 +60,7 @@
 	<tx:annotation-driven
 		transaction-manager="transManager" />
 
-	<!-- 注入biz -->
+	<!-- 扫描sql映射,并自动byType注入biz -->
 	<context:component-scan
 		base-package="com.accp.biz" use-default-filters="true" />
 </beans>
