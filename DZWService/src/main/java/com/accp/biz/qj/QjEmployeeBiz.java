@@ -17,7 +17,7 @@ import com.accp.entity.Employee;
  *
  */
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
-public class EmployeeBiz {
+public class QjEmployeeBiz {
 	@Resource
 	private QjEmployeeMapper ema;
 	

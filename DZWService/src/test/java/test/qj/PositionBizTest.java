@@ -1,4 +1,4 @@
-package test;
+package test.qj;
 
 import javax.annotation.Resource;
 
@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.accp.biz.qj.PositionBiz;
-import com.accp.biz.zly.EmployeeBiz;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations= "classpath:spring-ctx.xml")
