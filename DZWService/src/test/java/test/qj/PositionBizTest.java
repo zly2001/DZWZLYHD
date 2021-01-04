@@ -18,6 +18,7 @@ public class PositionBizTest {
 	
 	@Test
 	public void test() {
+		//11
 		System.out.println(biz.selectAll());
 	}
 	
