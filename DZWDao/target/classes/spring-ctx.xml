@@ -52,27 +52,30 @@
 	<mybatis-spring:scan base-package="com.accp.dao" factory-ref="SqlSessionFactoryBean"/>
 	
 	<!-- 3.biz扫描仪 获得@Service -->
-	<context:component-scan base-package="com.accp.biz"/>
+	<context:component-scan base-package="com.accp.biz" use-default-filters="true"/>
 	
 	<!-- 4.AOP配置管理事务器 -->
 	<bean id="DataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="BasicDataSource"/>
-	</bean>
+	</bean> 
+	
+	<!-- 5.启用元注解模式开启事务 -->
+	<tx:annotation-driven transaction-manager="transManager" />
 	
 	<!-- 5.事务增强器 -->
-	<tx:advice id="transAspect" transaction-manager="DataSourceTransactionManager">
+	<!-- <tx:advice id="transAspect" transaction-manager="DataSourceTransactionManager">
 		<tx:attributes>
-			<!-- 匹配方法 -->
+			匹配方法
 			<tx:method name="insert*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
 			<tx:method name="delete*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
 			<tx:method name="update*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
 			<tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="true"/>
 		</tx:attributes>
-	</tx:advice>
+	</tx:advice> -->
 	
 	<!-- 6.AOP注入绑定方法 -->
-	<aop:config>
+	<!-- <aop:config>
 		<aop:advisor advice-ref="transAspect" pointcut="within(com.accp.biz..*)"/>
-	</aop:config>
+	</aop:config> -->
 	
 </beans>

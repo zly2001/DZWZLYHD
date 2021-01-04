@@ -16,7 +16,7 @@ import com.accp.biz.zly.EmployeeBiz;
 import com.accp.entity.Employee;
 
 @RestController
-@RequestMapping("api/EmployeeAction")
+@RequestMapping("zly/api/EmployeeAction")
 public class EmployeeAction {
 
 	@Resource
@@ -59,6 +59,7 @@ public class EmployeeAction {
 	 * @param session
 	 */
 	public void loginOut(HttpSession session) {
+		System.out.println("进来了");
 		session.removeAttribute("employees");
 	}
 }

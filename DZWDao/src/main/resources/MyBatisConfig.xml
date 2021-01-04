@@ -37,4 +37,7 @@
 		</environment>
 	</environments>
 
+	<!-- <mappers>
+	    <mapper resource="mapper/EmployeeMapper.xml" />
+	</mappers> -->
 </configuration>
