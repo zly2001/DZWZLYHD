@@ -1,5 +1,7 @@
 package com.accp.biz.nj;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ public class ClientBiz {
 	@Resource
 	private ClientMapper client;
 	
-	public Client queryAllClientMessage() {
+	public List<Client> queryAllClientMessage() {
 		return client.queryAllClientMessage();
 	}
 
