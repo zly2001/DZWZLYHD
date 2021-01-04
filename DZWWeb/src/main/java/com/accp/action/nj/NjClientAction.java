@@ -1,9 +1,7 @@
 package com.accp.action.nj;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -27,7 +25,7 @@ public class NjClientAction {
 	/**
 	 * 查询所有用户信息
 	 */
-	public Map<String,String> selectByLogin(HttpSession session, @RequestBody String clientno){
+	public Map<String,String> queryAllClient(HttpSession session, @RequestBody String clientno){
 		Map<String, String> map = new HashMap<String, String>();
 		Client client1=biz.selectClient(clientno);
 		if (client1 != null) {
@@ -44,7 +42,7 @@ public class NjClientAction {
 	 * 新增用户信息
 	 */
 	@PostMapping
-	public Map<String, String> insertSelective(@RequestBody Client client) {
+	public Map<String, String> insert(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			biz.insert(client);
@@ -60,7 +58,7 @@ public class NjClientAction {
 	 * 修改用户信息
 	 */
 	@PutMapping
-	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Client client) {
+	public Map<String, String> updateClient(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			biz.updateClient(client);
@@ -76,7 +74,7 @@ public class NjClientAction {
 	/**
 	 * 删除用户信息
 	 */
-	public Map<String, String> deleteByPrimaryKey(@PathVariable String clientno) {
+	public Map<String, String> deleteClient(@PathVariable String clientno) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			biz.deleteClient(clientno);
