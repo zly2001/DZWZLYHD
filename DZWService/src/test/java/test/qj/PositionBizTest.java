@@ -21,5 +21,5 @@ public class PositionBizTest {
 		System.out.println(biz.selectAll());
 	}
 	
-	public void ss() {}
+
 }
