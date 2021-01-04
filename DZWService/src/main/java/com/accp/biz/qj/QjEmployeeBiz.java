@@ -22,6 +22,16 @@ public class QjEmployeeBiz {
 	private QjEmployeeMapper ema;
 	
 	/**
+	 * 登录
+	 * @param employeeid
+	 * @param epwd
+	 * @return
+	 */
+	public Employee selectByLogin(String employeeid, String epwd) {
+		return ema.selectByLogin(employeeid, epwd);
+	}
+	
+	/**
 	 * 查询所有员工信息(在职)
 	 * @return
 	 */
