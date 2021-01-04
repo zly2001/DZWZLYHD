@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.ClientMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Client" >
+    <id column="clientno" property="clientno" jdbcType="VARCHAR" />
+    <result column="employeeid" property="employeeid" jdbcType="VARCHAR" />
+    <result column="cliname" property="cliname" jdbcType="VARCHAR" />
+    <result column="cliphone" property="cliphone" jdbcType="VARCHAR" />
+    <result column="cliaddress" property="cliaddress" jdbcType="VARCHAR" />
+    <result column="clidate" property="clidate" jdbcType="DATE" />
+    <result column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="baifb" property="baifb" jdbcType="REAL" />
+    <result column="rhdate" property="rhdate" jdbcType="DATE" />
+    <result column="yue" property="yue" jdbcType="REAL" />
+    <result column="sfz" property="sfz" jdbcType="VARCHAR" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.accp.entity.Client" extends="BaseResultMap" >
+    <result column="khbz" property="khbz" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    clientno, employeeid, cliname, cliphone, cliaddress, clidate, mid, baifb, rhdate, 
+    yue, sfz, column1, column2, column3, column4
+  </sql>
+  <sql id="Blob_Column_List" >
+    khbz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from client
+    where clientno = #{clientno,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="queryAllClientMessage" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from client
+  
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from client
+    where clientno = #{clientno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Client" >
+    insert into client (clientno, employeeid, cliname, 
+      cliphone, cliaddress, clidate, 
+      mid, baifb, rhdate, yue, 
+      sfz, column1, column2, 
+      column3, column4, khbz
+      )
+    values (#{clientno,jdbcType=VARCHAR}, #{employeeid,jdbcType=VARCHAR}, #{cliname,jdbcType=VARCHAR}, 
+      #{cliphone,jdbcType=VARCHAR}, #{cliaddress,jdbcType=VARCHAR}, #{clidate,jdbcType=DATE}, 
+      #{mid,jdbcType=INTEGER}, #{baifb,jdbcType=REAL}, #{rhdate,jdbcType=DATE}, #{yue,jdbcType=REAL}, 
+      #{sfz,jdbcType=VARCHAR}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
+      #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR}, #{khbz,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Client" >
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientno != null" >
+        clientno,
+      </if>
+      <if test="employeeid != null" >
+        employeeid,
+      </if>
+      <if test="cliname != null" >
+        cliname,
+      </if>
+      <if test="cliphone != null" >
+        cliphone,
+      </if>
+      <if test="cliaddress != null" >
+        cliaddress,
+      </if>
+      <if test="clidate != null" >
+        clidate,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="baifb != null" >
+        baifb,
+      </if>
+      <if test="rhdate != null" >
+        rhdate,
+      </if>
+      <if test="yue != null" >
+        yue,
+      </if>
+      <if test="sfz != null" >
+        sfz,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+      <if test="khbz != null" >
+        khbz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientno != null" >
+        #{clientno,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="cliname != null" >
+        #{cliname,jdbcType=VARCHAR},
+      </if>
+      <if test="cliphone != null" >
+        #{cliphone,jdbcType=VARCHAR},
+      </if>
+      <if test="cliaddress != null" >
+        #{cliaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clidate != null" >
+        #{clidate,jdbcType=DATE},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="baifb != null" >
+        #{baifb,jdbcType=REAL},
+      </if>
+      <if test="rhdate != null" >
+        #{rhdate,jdbcType=DATE},
+      </if>
+      <if test="yue != null" >
+        #{yue,jdbcType=REAL},
+      </if>
+      <if test="sfz != null" >
+        #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="khbz != null" >
+        #{khbz,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Client" >
+    update client
+    <set >
+      <if test="employeeid != null" >
+        employeeid = #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="cliname != null" >
+        cliname = #{cliname,jdbcType=VARCHAR},
+      </if>
+      <if test="cliphone != null" >
+        cliphone = #{cliphone,jdbcType=VARCHAR},
+      </if>
+      <if test="cliaddress != null" >
+        cliaddress = #{cliaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clidate != null" >
+        clidate = #{clidate,jdbcType=DATE},
+      </if>
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="baifb != null" >
+        baifb = #{baifb,jdbcType=REAL},
+      </if>
+      <if test="rhdate != null" >
+        rhdate = #{rhdate,jdbcType=DATE},
+      </if>
+      <if test="yue != null" >
+        yue = #{yue,jdbcType=REAL},
+      </if>
+      <if test="sfz != null" >
+        sfz = #{sfz,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="khbz != null" >
+        khbz = #{khbz,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where clientno = #{clientno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.accp.entity.Client" >
+    update client
+    set employeeid = #{employeeid,jdbcType=VARCHAR},
+      cliname = #{cliname,jdbcType=VARCHAR},
+      cliphone = #{cliphone,jdbcType=VARCHAR},
+      cliaddress = #{cliaddress,jdbcType=VARCHAR},
+      clidate = #{clidate,jdbcType=DATE},
+      mid = #{mid,jdbcType=INTEGER},
+      baifb = #{baifb,jdbcType=REAL},
+      rhdate = #{rhdate,jdbcType=DATE},
+      yue = #{yue,jdbcType=REAL},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR},
+      khbz = #{khbz,jdbcType=LONGVARCHAR}
+    where clientno = #{clientno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Client" >
+    update client
+    set employeeid = #{employeeid,jdbcType=VARCHAR},
+      cliname = #{cliname,jdbcType=VARCHAR},
+      cliphone = #{cliphone,jdbcType=VARCHAR},
+      cliaddress = #{cliaddress,jdbcType=VARCHAR},
+      clidate = #{clidate,jdbcType=DATE},
+      mid = #{mid,jdbcType=INTEGER},
+      baifb = #{baifb,jdbcType=REAL},
+      rhdate = #{rhdate,jdbcType=DATE},
+      yue = #{yue,jdbcType=REAL},
+      sfz = #{sfz,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where clientno = #{clientno,jdbcType=VARCHAR}
+  </update>
+</mapper>
