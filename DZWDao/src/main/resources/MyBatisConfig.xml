@@ -38,6 +38,11 @@
 	</environments>
 
 	<!-- <mappers>
+<<<<<<< HEAD
 	    <mapper resource="mapper/EmployeeMapper.xml" />
 	</mappers>  -->
+=======
+	    <mapper resource="mapper/EmployeeMapper.xml" />
+	</mappers> -->
+>>>>>>> cd5e10c254c87a44ce279a1e78c5f4cbad07c1cf
 </configuration>
