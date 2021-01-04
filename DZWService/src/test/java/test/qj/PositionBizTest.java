@@ -18,7 +18,6 @@ public class PositionBizTest {
 	
 	@Test
 	public void test() {
-//		没开门开门
 		System.out.println(biz.selectAll());
 	}
 }
