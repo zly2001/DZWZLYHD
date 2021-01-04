@@ -20,4 +20,6 @@ public class PositionBizTest {
 	public void test() {
 		System.out.println(biz.selectAll());
 	}
+	
+	public void ss() {}
 }
