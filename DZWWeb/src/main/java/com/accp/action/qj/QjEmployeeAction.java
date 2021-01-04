@@ -16,8 +16,8 @@ import com.accp.biz.qj.QjEmployeeBiz;
 import com.accp.entity.Employee;
 
 @RestController
-@RequestMapping("qj/api/EmployeeAction")
-public class EmployeeAction {
+@RequestMapping("/qj/api/QjEmployeeAction")
+public class QjEmployeeAction {
 
 	@Resource
 	private QjEmployeeBiz biz;
@@ -53,13 +53,13 @@ public class EmployeeAction {
 		return (Employee)session.getAttribute("users");
 	}
 	
-	@GetMapping("loginOut")
+	
 	/**
 	 * 退出
 	 * @param session
 	 */
-	public void loginOut(HttpSession session) {
-		System.out.println("进来了");
+	@GetMapping("loginOut")
+	public void loginOut(HttpSession session) {		
 		session.removeAttribute("employees");
 	}
 }
