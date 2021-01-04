@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans 
@@ -18,7 +20,8 @@
 	<!-- 使用基础连接池 -->
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://127.0.0.1:3306/dzwzly?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true" />
 		<property name="username" value="root" />
@@ -37,7 +40,8 @@
 	<!-- spring集成mybaits配置 -->
 	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds" />
-		<property name="configLocation" value="classpath:MyBatisConfig.xml" />
+		<property name="configLocation"
+			value="classpath:MyBatisConfig.xml" />
 	</bean>
 
 	<!-- 扫描sql映射,并自动byType注入dao -->
@@ -53,8 +57,10 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	<!-- 启用元注解模式开启事务 -->
-	<tx:annotation-driven transaction-manager="transManager" />
+	<tx:annotation-driven
+		transaction-manager="transManager" />
 
-	<context:component-scan base-package="com.accp.biz"
-		use-default-filters="true" />
+	<!-- 注入biz -->
+	<context:component-scan
+		base-package="com.accp.biz" use-default-filters="true" />
 </beans>

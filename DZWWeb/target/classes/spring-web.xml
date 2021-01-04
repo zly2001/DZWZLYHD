@@ -16,28 +16,28 @@
 	<import resource="spring-ctx.xml" />
 
 	<!-- 启动元注解方式描述组件 -->
-	<context:component-scan base-package="com.accp.DZWWeb.action"
+	<context:component-scan base-package="com.accp.action"
 		use-default-filters="true" />
 
 	<!-- jsp视图解析器 -->
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
-		<!-- 前缀 -->
+		前缀
 		<property name="prefix" value="/WEB-INF/view/"></property>
-		<!-- 后缀 -->
+		后缀
 		<property name="suffix" value=".jsp"></property>
-	</bean>
+	</bean> -->
 	<!-- 异常处理视图解析器 -->
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
 				<prop key="java.lang.Exception">syserror</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
 
 
 	<!-- 文件上传解析器 【id:multipartResolver 必须存在】 -->

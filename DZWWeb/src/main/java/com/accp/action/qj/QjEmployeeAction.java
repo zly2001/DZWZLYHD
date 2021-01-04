@@ -16,8 +16,8 @@ import com.accp.biz.qj.QjEmployeeBiz;
 import com.accp.entity.Employee;
 
 @RestController
-@RequestMapping("qj/api/EmployeeAction")
-public class EmployeeAction {
+@RequestMapping("/qj/api/QjEmployeeAction")
+public class QjEmployeeAction {
 
 	@Resource
 	private QjEmployeeBiz biz;
@@ -57,9 +57,19 @@ public class EmployeeAction {
 	/**
 	 * 退出
 	 * @param session
-	 */
-	public void loginOut(HttpSession session) {
-		System.out.println("进来了");
+	 */	
+	public void loginOut(HttpSession session) {		
 		session.removeAttribute("employees");
 	}
+	
+	@GetMapping("queryOnline")
+	/**
+	 * 查询在职人员
+	 * @return
+	 */
+	public Employee queryOnline() {
+		return biz.selectAll();
+	} 
+	
+	
 }
