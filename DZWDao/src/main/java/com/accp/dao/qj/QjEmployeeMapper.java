@@ -1,11 +1,11 @@
-package com.accp.dao;
+package com.accp.dao.qj;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.accp.entity.Employee;
 
-public interface EmployeeMapper {
+public interface QjEmployeeMapper {
     int deleteByPrimaryKey(@Param("employeeid")String employeeid);
 
     int insert(Employee record);
@@ -22,5 +22,14 @@ public interface EmployeeMapper {
     int updateByPrimaryKeyWithBLOBs(Employee record);
 
     int updateByPrimaryKey(Employee record);
+    
+    @Select("select * from employee where statusid = 0")
+    Employee selectAll();
+    
+    @Select("select * from employee where ename like '%${ename}%'")
+    Employee selectByename(@Param("ename") String ename);
+    
+    @Select("select * from employee where statusid = 1")
+    Employee selectBystatusid();
     
 }
