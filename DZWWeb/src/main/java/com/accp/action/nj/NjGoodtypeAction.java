@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,25 +14,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.nj.ClientcarBiz;
-import com.accp.entity.Clientcar;
+import com.accp.biz.nj.GoodsTypeBiz;
 import com.accp.entity.Goodstype;
 
 @RestController
-@RequestMapping("nj/api/NjClientcarAction")
-public class NjClientcarAction {
+@RequestMapping("nj/api/NjGoodstypeAction")
+public class NjGoodtypeAction {
 	@Resource
-	private ClientcarBiz biz;
+	private GoodsTypeBiz biz;
 	/**
-	 * 查询用户名下的车子
+	 * 查询所有的商品类别
 	 */
-	public Map<String,String> queryClientcarByClientno(HttpSession session, @RequestBody String cno){
+	public Map<String,String> queryAllGoodsType(HttpSession session){
 		Map<String, String> map = new HashMap<String, String>();
-		Clientcar clientcar=biz.selectclientcar(cno);
-		if (clientcar != null) {
+		List<Goodstype> goodstype=biz.queryAllGoodsType();
+		if (goodstype != null) {
 			map.put("code", "200");
 			map.put("msg", "成功!");
-			session.setAttribute("client1", clientcar);
+			session.setAttribute("client1", goodstype);
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
@@ -40,10 +40,10 @@ public class NjClientcarAction {
 	}
 	
 	/**
-	 * 新增用户信息
+	 * 新增商品类别
 	 */
 	@PostMapping
-	public Map<String, String> insertClientcar(@RequestBody Clientcar record) {
+	public Map<String, String> insertGoodsType(@RequestBody Goodstype record) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			biz.insert(record);
@@ -56,13 +56,13 @@ public class NjClientcarAction {
 		return map;
 	}
 	/***
-	 * 修改用户信息
+	 * 修改商品类别
 	 */
 	@PutMapping
-	public Map<String, String> updateClientcar(@RequestBody Clientcar record) {
+	public Map<String, String> updateGoodsType(@RequestBody Goodstype record) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
-			biz.updateClientcar(record);
+			biz.updateGoodsType(record);
 			map.put("code", "200");
 			map.put("msg", "成功!");
 		} catch (Exception e) {
@@ -73,12 +73,12 @@ public class NjClientcarAction {
 	}
 	
 	/**
-	 * 删除用户信息
+	 * 删除商品类别
 	 */
-	public Map<String, String> deleteClientcar(@PathVariable String cno) {
+	public Map<String, String> deleteGoodsType(@PathVariable int goodid) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
-			biz.deleteClientcar(cno);
+			biz.deleteGoodsType(goodid);
 			map.put("code", "200");
 			map.put("msg", "成功!");
 		} catch (Exception e) {

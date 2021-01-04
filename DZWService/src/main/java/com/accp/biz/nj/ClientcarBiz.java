@@ -1,5 +1,7 @@
 package com.accp.biz.nj;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -32,6 +34,13 @@ public class ClientcarBiz {
 	 */
 	public int updateClientcar(Clientcar record) {
 		return clientcar.updateByPrimaryKey(record);
+	}
+	/**
+	 * 查询所有用户车的类型
+	 * @return
+	 */
+	public List<Clientcar> queryAllClientcar(){
+		return clientcar.queryAllClientCarMessage();
 	}
 	
 	/**
