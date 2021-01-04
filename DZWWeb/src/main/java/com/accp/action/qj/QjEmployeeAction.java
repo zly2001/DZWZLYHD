@@ -53,12 +53,11 @@ public class QjEmployeeAction {
 		return (Employee)session.getAttribute("users");
 	}
 	
-	
+	@GetMapping("loginOut")
 	/**
 	 * 退出
 	 * @param session
-	 */
-	@GetMapping("loginOut")
+	 */	
 	public void loginOut(HttpSession session) {		
 		session.removeAttribute("employees");
 	}
