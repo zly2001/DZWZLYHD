@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.GoodstypeMapper" >
+<mapper namespace="com.accp.dao.nj.NjGoodsTypeMapper" >
   <resultMap id="BaseResultMap" type="com.accp.entity.Goodstype" >
     <id column="goodid" property="goodid" jdbcType="INTEGER" />
     <result column="goodname" property="goodname" jdbcType="VARCHAR" />

@@ -22,12 +22,13 @@ import com.accp.entity.Goodstype;
 public class NjClientcarAction {
 	@Resource
 	private ClientcarBiz biz;
+
 	/**
 	 * 查询用户名下的车子
 	 */
-	public Map<String,String> queryClientcarByClientno(HttpSession session, @RequestBody String cno){
+	public Map<String, String> queryClientcarByClientno(HttpSession session, @RequestBody String cno) {
 		Map<String, String> map = new HashMap<String, String>();
-		Clientcar clientcar=biz.selectclientcar(cno);
+		Clientcar clientcar = biz.selectclientcar(cno);
 		if (clientcar != null) {
 			map.put("code", "200");
 			map.put("msg", "成功!");
@@ -36,9 +37,9 @@ public class NjClientcarAction {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;		
+		return map;
 	}
-	
+
 	/**
 	 * 新增用户信息
 	 */
@@ -55,6 +56,7 @@ public class NjClientcarAction {
 		}
 		return map;
 	}
+
 	/***
 	 * 修改用户信息
 	 */
@@ -71,7 +73,7 @@ public class NjClientcarAction {
 		}
 		return map;
 	}
-	
+
 	/**
 	 * 删除用户信息
 	 */
@@ -87,6 +89,5 @@ public class NjClientcarAction {
 		}
 		return map;
 	}
-	
 
 }
