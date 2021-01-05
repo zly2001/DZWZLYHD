@@ -67,7 +67,7 @@ public class QjPositionAction {
 	 * @return
 	 */
 	@PutMapping("position")
-	public Map<String, String> updatePersonInfo(@RequestBody Position position) {
+	public Map<String, String> updatePositionInfo(@RequestBody Position position) {
 		Map<String, String> message = new HashMap<String, String>();
 		pbiz.updatePosition(position);
 		message.put("code", "200");
