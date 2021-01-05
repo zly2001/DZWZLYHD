@@ -1,5 +1,7 @@
 package com.accp.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -19,5 +21,5 @@ public interface PositionMapper {
     int updateByPrimaryKey(Position record);
     
     @Select("select * from position")
-    Position selectAll();
+    List<Position> selectAll();
 }

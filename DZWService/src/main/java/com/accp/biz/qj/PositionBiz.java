@@ -1,5 +1,7 @@
 package com.accp.biz.qj;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,7 +28,7 @@ public class PositionBiz {
 	 * 查询所有部门
 	 * @return
 	 */
-	public Position selectAll() {
+	public List<Position> selectAll() {
 		return pma.selectAll();
 	}
 	
