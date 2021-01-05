@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.ClientcarMapper" >
+<mapper namespace="com.accp.dao.nj.NjClientCarMapper" >
   <resultMap id="BaseResultMap" type="com.accp.entity.Clientcar" >
     <id column="cno" property="cno" jdbcType="VARCHAR" />
     <result column="clientno" property="clientno" jdbcType="VARCHAR" />

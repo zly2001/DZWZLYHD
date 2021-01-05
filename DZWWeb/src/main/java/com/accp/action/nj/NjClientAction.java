@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,6 +22,7 @@ import com.accp.entity.Client;
 public class NjClientAction {
 	@Resource
 	private ClientBiz biz;
+	
 	@PostMapping
 	/**
 	 * 查询所有用户信息
@@ -41,7 +43,7 @@ public class NjClientAction {
 	/**
 	 * 新增用户信息
 	 */
-	@PostMapping
+	@PostMapping("insert")
 	public Map<String, String> insert(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -74,6 +76,7 @@ public class NjClientAction {
 	/**
 	 * 删除用户信息
 	 */
+	@DeleteMapping
 	public Map<String, String> deleteClient(@PathVariable String clientno) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
