@@ -62,7 +62,7 @@
       <if test="xmoney != null" >
         xmoney,
       </if>
-      <if test="xdate != null" >
+      <if test="xdate == null" >
         xdate,
       </if>
       <if test="column1 != null" >
@@ -100,8 +100,8 @@
       <if test="xmoney != null" >
         #{xmoney,jdbcType=REAL},
       </if>
-      <if test="xdate != null" >
-        #{xdate,jdbcType=CHAR},
+      <if test="xdate == null" >
+        NOW(),
       </if>
       <if test="column1 != null" >
         #{column1,jdbcType=VARCHAR},

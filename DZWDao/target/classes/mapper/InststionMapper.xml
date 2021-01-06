@@ -88,7 +88,7 @@
       <if test="izt != null" >
         izt,
       </if>
-      <if test="jdate != null" >
+      <if test="jdate == null" >
         jdate,
       </if>
       <if test="jcday != null" >
@@ -165,8 +165,8 @@
       <if test="izt != null" >
         #{izt,jdbcType=INTEGER},
       </if>
-      <if test="jdate != null" >
-        #{jdate,jdbcType=DATE},
+      <if test="jdate == null" >
+        NOW(),
       </if>
       <if test="jcday != null" >
         #{jcday,jdbcType=DATE},
