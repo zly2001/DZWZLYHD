@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.accp.biz.qj.PositionBiz;
+import com.accp.entity.Position;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,8 +19,9 @@ public class PositionBizTest {
 	
 	@Test
 	public void test() {
-		//11
-		System.out.println(biz.selectAll());
+		Position p=new Position();
+		p.setPositionname("okoko");		
+		System.out.println(biz.insertPosition(p));
 	}
 	
 
