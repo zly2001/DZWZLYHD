@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.ClientMapper;
 import com.accp.dao.ClientcarMapper;
+import com.accp.dao.nj.NJClientMapper;
 import com.accp.entity.Client;
 
 @Service
@@ -22,7 +23,7 @@ import com.accp.entity.Client;
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
 public class ClientBiz {
 	@Resource
-	private ClientMapper client;
+	private NJClientMapper client;
 	/**
 	 * 查询所有用户信息
 	 * @return
