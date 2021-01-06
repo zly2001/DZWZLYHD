@@ -34,49 +34,49 @@
   <insert id="insertSelective" parameterType="com.accp.entity.Position" >
     insert into position
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="record.positionid != null" >
+      <if test="positionid != null" >
         positionid,
       </if>
-      <if test="record.positionname != null" >
+      <if test="positionname != null" >
         positionname,
       </if>
-      <if test="record.type != null" >
+      <if test="type != null" >
         type,
       </if>
-      <if test="record.column1 != null" >
+      <if test="column1 != null" >
         column1,
       </if>
-      <if test="record.column2 != null" >
+      <if test="column2 != null" >
         column2,
       </if>
-      <if test="record.column3 != null" >
+      <if test="column3 != null" >
         column3,
       </if>
-      <if test="record.column4 != null" >
+      <if test="column4 != null" >
         column4,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="record.positionid != null" >
-        #{record.positionid,jdbcType=INTEGER},
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
       </if>
-      <if test="record.positionname != null" >
-        #{record.positionname,jdbcType=VARCHAR},
+      <if test="positionname != null" >
+        #{positionname,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
-        #{record.type,jdbcType=INTEGER},
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
       </if>
-      <if test="record.column1 != null" >
-        #{record.column1,jdbcType=VARCHAR},
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
       </if>
-      <if test="record.column2 != null" >
-        #{record.column2,jdbcType=VARCHAR},
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
       </if>
-      <if test="record.column3 != null" >
-        #{record.column3,jdbcType=VARCHAR},
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
       </if>
-      <if test="record.column4 != null" >
-        #{record.column4,jdbcType=VARCHAR},
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
