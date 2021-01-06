@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.accp.entity.Position;
 
 public interface PositionMapper {
-    int deleteByPrimaryKey(@Param("positionid")Integer positionid);
+    int deleteByPrimaryKey(Integer positionid);
 
     int insert(Position record);
 
@@ -16,7 +16,7 @@ public interface PositionMapper {
     
     Position selectByPrimaryKey(Integer positionid);
     
-    int updateByPrimaryKeySelective(@Param("record")Position record);
+    int updateByPrimaryKeySelective(Position record);
 
     int updateByPrimaryKey(Position record);
     
