@@ -60,6 +60,9 @@ public interface NJClientMapper {
 	 * @return
 	 */
 	int updateByPrimaryKey(Client record);
-
+	/**
+	 * 查询所有用户信息
+	 * @return
+	 */
 	List<Client> queryAllClientMessage();
 }

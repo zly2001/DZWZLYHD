@@ -1,6 +1,7 @@
 package com.accp.action.nj;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -23,11 +24,28 @@ public class NjClientAction {
 	@Resource
 	private ClientBiz biz;
 	
-	@PostMapping
-	/**
+	@PostMapping("queryAll")
+	/***
 	 * 查询所有用户信息
 	 */
 	public Map<String,String> queryAllClient(HttpSession session, @RequestBody String clientno){
+		Map<String, String> map = new HashMap<String, String>();
+		List<Client> client1=biz.queryAllClientMessage();
+		if (client1 != null) {
+			map.put("code", "200");
+			map.put("msg", "成功!");
+			session.setAttribute("client1", client1);
+		} else {
+			map.put("code", "500");
+			map.put("msg", "失败!");
+		}
+		return map;		
+	}
+	@PostMapping("queryUser")
+	/**
+	 * 查询单个用户信息
+	 */
+	public Map<String,String> queryClient(HttpSession session, @RequestBody String clientno){
 		Map<String, String> map = new HashMap<String, String>();
 		Client client1=biz.selectClient(clientno);
 		if (client1 != null) {
