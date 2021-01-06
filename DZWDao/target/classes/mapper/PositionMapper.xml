@@ -113,5 +113,5 @@
       column3 = #{column3,jdbcType=VARCHAR},
       column4 = #{column4,jdbcType=VARCHAR}
     where positionid = #{positionid,jdbcType=INTEGER}
-  </update>
+ </update>
 </mapper>
