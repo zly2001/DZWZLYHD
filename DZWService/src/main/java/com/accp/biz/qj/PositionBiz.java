@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -12,16 +13,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.accp.dao.PositionMapper;
 import com.accp.entity.Position;
 
-@Service
+
 /**
  * 事务管理元注解
  * @author Administrator
  *
  */
-@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
+@Service
 public class PositionBiz {
 	
-	@Resource
+	@Autowired
 	private PositionMapper pma;
 	
 	/**
@@ -37,6 +38,7 @@ public class PositionBiz {
 	 * @param record
 	 * @return
 	 */
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
 	public int insertPosition(Position record) {
 		return pma.insertSelective(record);
 	}

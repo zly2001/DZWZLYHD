@@ -12,7 +12,7 @@ public interface PositionMapper {
 
     int insert(Position record);
 
-    int insertSelective(@Param("record")Position record);
+    int insertSelective(Position record);
     
     Position selectByPrimaryKey(Integer positionid);
     

@@ -39,7 +39,7 @@ public class QjPositionAction {
 	 * @param position
 	 * @return
 	 */
-	@PostMapping("position")
+	@PostMapping
 	public Map<String, String> addPositionInfo(@RequestBody Position position) {
 		Map<String, String> message = new HashMap<String, String>();
 		pbiz.insertPosition(position);
