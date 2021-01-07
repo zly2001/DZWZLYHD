@@ -1,6 +1,7 @@
 package com.accp.action.ljy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -29,6 +30,15 @@ public class TeamAction {
 	 */
 	public Team selectByPrimaryKey(Integer tid) {
 		return biz.selectByPrimaryKey(tid);
+	}
+	
+	@GetMapping("selectAll")
+	/**
+	 * 张来遇写的用于查询所有班组以及班组下的技工(动了TeamMapper.xml文件)
+	 * @return
+	 */
+	public List<Team> selectAll(){
+		return biz.selectAll();
 	}
 	
 	@PostMapping

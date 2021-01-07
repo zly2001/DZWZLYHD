@@ -1,5 +1,7 @@
 package com.accp.biz.ljy;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -29,6 +31,14 @@ public class TeamBiz {
 	 */
 	public Team selectByPrimaryKey(Integer tid) {
 		return dao.selectByPrimaryKey(tid);
+	}
+	
+	/**
+	 * 张来遇写的用于查询所有班组以及班组下的技工(动了TeamMapper.xml文件)
+	 * @return
+	 */
+	public List<Team> selectAll(){
+		return dao.selectAll();
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false, rollbackFor = {Exception.class })
