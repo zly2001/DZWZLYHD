@@ -28,24 +28,17 @@ public class NjClientAction {
 	/***
 	 * 查询所有用户信息
 	 */
-	public Map<String,String> queryAllClient(HttpSession session, @RequestBody String clientno){
-		Map<String, String> map = new HashMap<String, String>();
+	public List<Client> queryAllClient(HttpSession session){
+		
 		List<Client> client1=biz.queryAllClientMessage();
-		if (client1 != null) {
-			map.put("code", "200");
-			map.put("msg", "成功!");
-			session.setAttribute("client1", client1);
-		} else {
-			map.put("code", "500");
-			map.put("msg", "失败!");
-		}
-		return map;		
+		
+		return client1;		
 	}
-	@PostMapping("queryUser")
+	@PostMapping("/queryUser/{clientno}")
 	/**
 	 * 查询单个用户信息
 	 */
-	public Map<String,String> queryClient(HttpSession session, @RequestBody String clientno){
+	public Map<String,String> queryClient(HttpSession session, @PathVariable String clientno){
 		Map<String, String> map = new HashMap<String, String>();
 		Client client1=biz.selectClient(clientno);
 		if (client1 != null) {

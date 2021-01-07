@@ -20,7 +20,6 @@ import com.accp.entity.Client;
  * @author 28225
  *
  */
-@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
 public class ClientBiz {
 	@Resource
 	private NJClientMapper client;

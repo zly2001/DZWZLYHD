@@ -37,8 +37,10 @@
     where clientno = #{clientno,jdbcType=VARCHAR}
   </select>
   
-   <select id="queryAllClientMessage" resultMap="ResultMapWithBLOBs" resultType="com.accp.entity.Client" parameterType="java.lang.String" >
+   <select id="queryAllClientMessage" resultMap="ResultMapWithBLOBs" >
     select 
+    <include refid="Base_Column_List" />
+    ,
     <include refid="Base_Column_List" />
     from client
   </select>
