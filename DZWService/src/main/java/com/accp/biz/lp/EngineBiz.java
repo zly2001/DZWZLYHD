@@ -19,11 +19,11 @@ import com.github.pagehelper.PageInfo;
  *
  */
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true, rollbackFor = {Exception.class })
-public class lp {
+public class EngineBiz {
 	@Resource
 	private Engine dao;
 	
-	private PageInfo<Goodstype> SelectAll(Integer p,String bh,String name){
+	public PageInfo<Goodstype> SelectAll(Integer p,String bh,String name){
 		PageHelper.startPage(p, 5);
 		return new PageInfo<Goodstype>(dao.SelectAll(bh, name));
 	}
