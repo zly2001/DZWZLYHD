@@ -70,7 +70,7 @@ public class NjClientAction {
 	/***
 	 * 修改用户信息
 	 */
-	@PutMapping
+	@PutMapping("update")
 	public Map<String, String> updateClient(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
