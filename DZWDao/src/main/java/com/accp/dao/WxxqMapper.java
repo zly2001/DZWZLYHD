@@ -10,7 +10,7 @@ public interface WxxqMapper {
     int insertSelective(Wxxq record);
 
     Wxxq selectByPrimaryKey(Integer xqid);
-       
+
     int updateByPrimaryKeySelective(Wxxq record);
 
     int updateByPrimaryKey(Wxxq record);

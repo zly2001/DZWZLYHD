@@ -20,7 +20,15 @@ public class Team {
     //张来遇写的集合对象用于储存多个技工
     private List<Artisan> Artisan;
 
-    public Integer getTid() {
+    public List<Artisan> getArtisan() {
+		return Artisan;
+	}
+
+	public void setArtisan(List<Artisan> artisan) {
+		Artisan = artisan;
+	}
+
+	public Integer getTid() {
         return tid;
     }
 

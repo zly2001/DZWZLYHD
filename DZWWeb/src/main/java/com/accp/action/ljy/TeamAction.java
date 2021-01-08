@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +18,9 @@ import com.accp.biz.ljy.TeamBiz;
 import com.accp.entity.Team;
 
 @RestController
-@RequestMapping("/zly/api/TeamAction")
+@RequestMapping("/ljy/api/TeamAction")
 public class TeamAction {
+	
 	@Resource
 	private TeamBiz biz;
 	
@@ -47,7 +49,7 @@ public class TeamAction {
 	 * @param Team
 	 * @return
 	 */
-	public Map<String,String> insertSelective(Team Team) {		
+	public Map<String,String> insertSelective(@RequestBody Team Team) {		
 		Map<String, String> map = new HashMap<String, String>();
 		if (biz.insertSelective(Team) > 0) {
 			map.put("code", "200");
@@ -65,7 +67,7 @@ public class TeamAction {
 	 * @param Team
 	 * @return
 	 */
-	public Map<String, String> updateByPrimaryKeySelective(Team Team) {
+	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Team Team) {
 		Map<String, String> map = new HashMap<String, String>();
 		if (biz.updateByPrimaryKeySelective(Team) > 0) {
 			map.put("code", "200");

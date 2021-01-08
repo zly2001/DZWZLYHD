@@ -1,5 +1,7 @@
 package com.accp.entity;
 
+import java.util.List;
+
 public class Itemstype {
     private Integer itemstypeid;
 
@@ -14,8 +16,19 @@ public class Itemstype {
     private String column3;
 
     private String column4;
+    
+    //张来遇写的集合对象用于储存多个维修项目
+    private List<Items> Items;
 
-    public Integer getItemstypeid() {
+    public List<Items> getItems() {
+		return Items;
+	}
+
+	public void setItems(List<Items> items) {
+		Items = items;
+	}
+
+	public Integer getItemstypeid() {
         return itemstypeid;
     }
 

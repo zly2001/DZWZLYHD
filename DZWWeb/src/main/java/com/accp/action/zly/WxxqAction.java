@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,15 +39,19 @@ public class WxxqAction {
 	 * @param Wxxq
 	 * @return
 	 */
-	public Map<String,String> insertSelective(Wxxq Wxxq) {		
+	public Map<String,String> insertSelective(@RequestBody Wxxq[] Wxxqs) {		
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.insertSelective(Wxxq) > 0) {
+		try {
+			for (Wxxq w : Wxxqs) {
+				w.setInid(Wxxqs[0].getInid());
+				biz.insertSelective(w);
+			}
 			map.put("code", "200");
-			map.put("msg", "成功!");			
-		} else {
+			map.put("msg", "成功!");	
+		} catch (Exception e) {
 			map.put("code", "500");
 			map.put("msg", "失败!");
-		}
+		}		
 		return map;	
 	}
 	
@@ -56,7 +61,7 @@ public class WxxqAction {
 	 * @param Wxxq
 	 * @return
 	 */
-	public Map<String, String> updateByPrimaryKeySelective(Wxxq Wxxq) {
+	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Wxxq Wxxq) {
 		Map<String, String> map = new HashMap<String, String>();
 		if (biz.updateByPrimaryKeySelective(Wxxq) > 0) {
 			map.put("code", "200");
