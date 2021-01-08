@@ -70,7 +70,7 @@ public class NjClientAction {
 	/***
 	 * 修改用户信息
 	 */
-	@PutMapping
+	@PutMapping("update")
 	public Map<String, String> updateClient(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -87,7 +87,7 @@ public class NjClientAction {
 	/**
 	 * 删除用户信息
 	 */
-	@DeleteMapping
+	@DeleteMapping("/delete/{clientno}")
 	public Map<String, String> deleteClient(@PathVariable String clientno) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
