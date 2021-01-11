@@ -8,7 +8,8 @@
 	</select>
 
 	<!-- 根据班组id查询技工 -->
-	<select id="selectByArtisan" resultType="com.accp.entity.Artisan">
+	<select id="selectByArtisan"
+		resultType="com.accp.entity.Artisan">
 		SELECT * FROM `artisan` WHERE `tid`=#{0}
 	</select>
 
@@ -21,9 +22,10 @@
 		<result column="column2" property="column2" jdbcType="VARCHAR" />
 		<result column="column3" property="column3" jdbcType="VARCHAR" />
 		<result column="column4" property="column4" jdbcType="VARCHAR" />
-		
+
 		<!-- 一个班组对应多个技工 -->
-		<collection column="tid" property="Artisan" select="selectByArtisan"/>
+		<collection column="tid" property="Artisan"
+			select="selectByArtisan" />
 	</resultMap>
 	<sql id="Base_Column_List">
 		tid, tname, type, column1, column2, column3, column4

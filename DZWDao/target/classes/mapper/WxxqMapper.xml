@@ -9,7 +9,7 @@
     <result column="spid" property="spid" jdbcType="INTEGER" />
     <result column="zt" property="zt" jdbcType="INTEGER" />
     <result column="xmoney" property="xmoney" jdbcType="REAL" />
-    <result column="xdate" property="xdate" jdbcType="CHAR" />
+    <result column="xdate" property="xdate" jdbcType="TIMESTAMP" />
     <result column="column1" property="column1" jdbcType="VARCHAR" />
     <result column="column2" property="column2" jdbcType="VARCHAR" />
     <result column="column3" property="column3" jdbcType="VARCHAR" />
@@ -35,7 +35,7 @@
       column3, column4)
     values (#{xqid,jdbcType=INTEGER}, #{inid,jdbcType=VARCHAR}, #{xqname,jdbcType=VARCHAR}, 
       #{xqsl,jdbcType=INTEGER}, #{spid,jdbcType=INTEGER}, #{zt,jdbcType=INTEGER}, #{xmoney,jdbcType=REAL}, 
-      #{xdate,jdbcType=CHAR}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
+      #{xdate,jdbcType=TIMESTAMP}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
       #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.accp.entity.Wxxq" >
@@ -139,7 +139,7 @@
         xmoney = #{xmoney,jdbcType=REAL},
       </if>
       <if test="xdate != null" >
-        xdate = #{xdate,jdbcType=CHAR},
+        xdate = #{xdate,jdbcType=TIMESTAMP},
       </if>
       <if test="column1 != null" >
         column1 = #{column1,jdbcType=VARCHAR},
@@ -164,7 +164,7 @@
       spid = #{spid,jdbcType=INTEGER},
       zt = #{zt,jdbcType=INTEGER},
       xmoney = #{xmoney,jdbcType=REAL},
-      xdate = #{xdate,jdbcType=CHAR},
+      xdate = #{xdate,jdbcType=TIMESTAMP},
       column1 = #{column1,jdbcType=VARCHAR},
       column2 = #{column2,jdbcType=VARCHAR},
       column3 = #{column3,jdbcType=VARCHAR},

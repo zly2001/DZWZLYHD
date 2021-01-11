@@ -20,8 +20,8 @@ public class ClientcarBiz {
 	/**
 	 * 根据用户id查询用户名下所属的车辆
 	 */
-	public Clientcar selectclientcar(String cno) {
-		return clientcar.selectByPrimaryKey(cno);
+	public List<Clientcar> selectclientcar(String clientno) {
+		return clientcar.selectByPrimaryKey(clientno);
 	}
 	/**
 	 * 根据用户id新增用户名下所属的车辆

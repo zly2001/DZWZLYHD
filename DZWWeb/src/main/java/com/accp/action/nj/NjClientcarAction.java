@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +20,7 @@ import com.accp.entity.Clientcar;
 import com.accp.entity.Goodstype;
 
 @RestController
-@RequestMapping("nj/api/NjClientcarAction")
+@RequestMapping("/nj/api/NjClientcarAction")
 public class NjClientcarAction {
 	@Resource
 	private ClientcarBiz biz;
@@ -26,20 +28,22 @@ public class NjClientcarAction {
 	/**
 	 * 查询用户名下的车子
 	 */
-	public Map<String, String> queryClientcarByClientno(HttpSession session, @RequestBody String cno) {
-		Map<String, String> map = new HashMap<String, String>();
-		Clientcar clientcar = biz.selectclientcar(cno);
-		if (clientcar != null) {
-			map.put("code", "200");
-			map.put("msg", "成功!");
-			session.setAttribute("client1", clientcar);
-		} else {
-			map.put("code", "500");
-			map.put("msg", "失败!");
-		}
-		return map;
+	@PostMapping("/queryAll/{clientno}")
+	public List<Clientcar> queryClientcarByClientno(HttpSession session,@PathVariable String clientno) {
+		System.err.println(clientno);
+		List<Clientcar> clientcar = biz.selectclientcar(clientno);
+		return clientcar;
 	}
 
+	/**
+	 * 查询用户名下的车子
+	 */
+	@GetMapping()
+	public List<Clientcar> queryClientcarByClientno1(HttpSession session,@PathVariable String clientno) {
+		System.out.println(111);
+		return null;
+	}
+	
 	/**
 	 * 新增用户信息
 	 */
