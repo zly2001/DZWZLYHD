@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.nj.EmployeeBiz;
-import com.accp.entity.Client;
 import com.accp.entity.Employee;
 
 @RestController

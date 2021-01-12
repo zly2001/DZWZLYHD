@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.nj.ClientcarBiz;
 import com.accp.entity.Clientcar;
-import com.accp.entity.Goodstype;
 
 @RestController
 @RequestMapping("/nj/api/NjClientcarAction")
