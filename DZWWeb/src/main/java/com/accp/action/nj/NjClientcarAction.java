@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Delete;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +40,7 @@ public class NjClientcarAction {
 	/**
 	 * 查询用户名下的车子
 	 */
-	@GetMapping()
+	@GetMapping
 	public List<Clientcar> queryClientcarByClientno1(HttpSession session,@PathVariable String clientno) {
 		System.out.println(111);
 		return null;
@@ -47,7 +49,7 @@ public class NjClientcarAction {
 	/**
 	 * 新增用户信息
 	 */
-	@PostMapping
+	@PostMapping("insert")
 	public Map<String, String> insertClientcar(@RequestBody Clientcar record) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -64,7 +66,7 @@ public class NjClientcarAction {
 	/***
 	 * 修改用户信息
 	 */
-	@PutMapping
+	@PutMapping("/update")
 	public Map<String, String> updateClientcar(@RequestBody Clientcar record) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -81,6 +83,7 @@ public class NjClientcarAction {
 	/**
 	 * 删除用户信息
 	 */
+	@DeleteMapping("/delete/{cno}")
 	public Map<String, String> deleteClientcar(@PathVariable String cno) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
