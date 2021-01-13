@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,7 @@ public class WxxqAction {
 	 * @param xqid
 	 * @return
 	 */
-	public Wxxq selectByPrimaryKey(Integer xqid) {
+	public Wxxq selectByPrimaryKey(@PathVariable Integer xqid) {
 		return biz.selectByPrimaryKey(xqid);
 	}
 	

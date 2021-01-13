@@ -15,91 +15,88 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.zly.ItemstypeBiz;
-import com.accp.entity.Itemstype;
+import com.accp.biz.zly.WorkcardescBiz;
+import com.accp.entity.Workcardesc;
 
 @RestController
-@RequestMapping("/lp/api/ItemstypeAction")
-public class ItemstypeAction {
+@RequestMapping("/zly/api/WorkcardescAction")
+public class WorkcardescAction {
 
 	@Resource
-	private ItemstypeBiz biz;
-
-	@GetMapping("{itemstypeid}")
+	private WorkcardescBiz biz;
+	
+	@GetMapping("{workcarjlid}")
 	/**
-	 * 根据维修单号查询维修
-	 * 
-	 * @param itemstypeid
+	 * 根据救援车辆id查询救援车辆
+	 * @param workcarjlid
 	 * @return
 	 */
-	public Itemstype selectByPrimaryKey(@PathVariable Integer itemstypeid) {
-		return biz.selectByPrimaryKey(itemstypeid);
+	public Workcardesc selectByPrimaryKey(@PathVariable Integer workcarjlid) {
+		return biz.selectByPrimaryKey(workcarjlid);
 	}
 	
-	@GetMapping("selectAll")
+	@GetMapping("selectByInid/{inid}")
 	/**
-	 * 张来遇写的用于查询所有维修项目类型以及类型下的维修项目(动了ItemstypeMapper.xml文件)
+	 * 张来遇写的根据维修编号查询救援记录
+	 * 
+	 * @param inid
 	 * @return
 	 */
-	public List<Itemstype> selectAll(){
-		return biz.selectAll();
+	public Workcardesc selectByInid(@PathVariable String inid) {
+		return biz.selectByInid(inid);
 	}
-
+	
 	@PostMapping
 	/**
-	 * 新增维修单
-	 * 
-	 * @param Itemstype
+	 * 新增救援车辆
+	 * @param Workcardesc
 	 * @return
 	 */
-	public Map<String, String> insertSelective(@RequestBody Itemstype Itemstype) {
+	public Map<String,String> insertSelective(@RequestBody Workcardesc Workcardesc) {		
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.insertSelective(Itemstype) > 0) {
+		if (biz.insertSelective(Workcardesc) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;
+		return map;	
 	}
-
+	
 	@PutMapping
 	/**
-	 * 修改维修单
-	 * 
-	 * @param Itemstype
+	 * 修改救援车辆
+	 * @param Workcardesc
 	 * @return
 	 */
-	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Itemstype Itemstype) {
+	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Workcardesc Workcardesc) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.updateByPrimaryKeySelective(Itemstype) > 0) {
+		if (biz.updateByPrimaryKeySelective(Workcardesc) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
 		return map;
 	}
-
+	
 	@DeleteMapping
 	/**
-	 * 删除维修单
-	 * 
-	 * @param itemstypeid
+	 * 删除救援车辆
+	 * @param workcarjlid
 	 * @return
 	 */
-	public Map<String, String> deleteByPrimaryKey(Integer itemstypeid) {
+	public Map<String, String> deleteByPrimaryKey(Integer workcarjlid) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.deleteByPrimaryKey(itemstypeid) > 0) {
+		if (biz.deleteByPrimaryKey(workcarjlid) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;
+		return map;		
 	}
-
 }

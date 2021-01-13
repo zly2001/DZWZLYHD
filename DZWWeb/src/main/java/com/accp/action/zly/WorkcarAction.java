@@ -15,91 +15,86 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.zly.ItemstypeBiz;
-import com.accp.entity.Itemstype;
+import com.accp.biz.zly.WorkcarBiz;
+import com.accp.entity.Workcar;
 
 @RestController
-@RequestMapping("/lp/api/ItemstypeAction")
-public class ItemstypeAction {
+@RequestMapping("/zly/api/WorkcarAction")
+public class WorkcarAction {
 
 	@Resource
-	private ItemstypeBiz biz;
-
-	@GetMapping("{itemstypeid}")
+	private WorkcarBiz biz;
+	
+	@GetMapping("{wid}")
 	/**
-	 * 根据维修单号查询维修
-	 * 
-	 * @param itemstypeid
+	 * 根据救援车辆id查询救援车辆
+	 * @param wid
 	 * @return
 	 */
-	public Itemstype selectByPrimaryKey(@PathVariable Integer itemstypeid) {
-		return biz.selectByPrimaryKey(itemstypeid);
+	public Workcar selectByPrimaryKey(@PathVariable Integer wid) {
+		return biz.selectByPrimaryKey(wid);
 	}
 	
-	@GetMapping("selectAll")
+	@GetMapping()
 	/**
-	 * 张来遇写的用于查询所有维修项目类型以及类型下的维修项目(动了ItemstypeMapper.xml文件)
+	 * 张来遇写查询出所有空闲状态中的救援车辆
 	 * @return
 	 */
-	public List<Itemstype> selectAll(){
-		return biz.selectAll();
+	public  List<Workcar> selectAllByWorkcar() {
+		return biz.selectAllByWorkcar();
 	}
-
+	
 	@PostMapping
 	/**
-	 * 新增维修单
-	 * 
-	 * @param Itemstype
+	 * 新增救援车辆
+	 * @param Workcar
 	 * @return
 	 */
-	public Map<String, String> insertSelective(@RequestBody Itemstype Itemstype) {
+	public Map<String,String> insertSelective(@RequestBody Workcar Workcar) {		
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.insertSelective(Itemstype) > 0) {
+		if (biz.insertSelective(Workcar) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;
+		return map;	
 	}
-
+	
 	@PutMapping
 	/**
-	 * 修改维修单
-	 * 
-	 * @param Itemstype
+	 * 修改救援车辆
+	 * @param Workcar
 	 * @return
 	 */
-	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Itemstype Itemstype) {
+	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Workcar Workcar) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.updateByPrimaryKeySelective(Itemstype) > 0) {
+		if (biz.updateByPrimaryKeySelective(Workcar) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
 		return map;
 	}
-
+	
 	@DeleteMapping
 	/**
-	 * 删除维修单
-	 * 
-	 * @param itemstypeid
+	 * 删除救援车辆
+	 * @param wid
 	 * @return
 	 */
-	public Map<String, String> deleteByPrimaryKey(Integer itemstypeid) {
+	public Map<String, String> deleteByPrimaryKey(Integer wid) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.deleteByPrimaryKey(itemstypeid) > 0) {
+		if (biz.deleteByPrimaryKey(wid) > 0) {
 			map.put("code", "200");
-			map.put("msg", "成功!");
+			map.put("msg", "成功!");			
 		} else {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;
+		return map;		
 	}
-
 }

@@ -3,6 +3,7 @@ package com.accp.entity;
 import java.util.Date;
 
 public class Inststion {
+	// 张来遇改了lc的数据类型Integer ->Float
     private String inid;
 
     private Integer wid;
@@ -29,7 +30,7 @@ public class Inststion {
 
     private Integer iszn;
 
-    private Integer lc;
+    private Float lc;
 
     private Integer ifjs;
 
@@ -157,11 +158,11 @@ public class Inststion {
         this.iszn = iszn;
     }
 
-    public Integer getLc() {
+    public Float getLc() {
         return lc;
     }
 
-    public void setLc(Integer lc) {
+    public void setLc(Float lc) {
         this.lc = lc;
     }
 
