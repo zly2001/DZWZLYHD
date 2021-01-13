@@ -35,7 +35,7 @@ public interface NjClientCarMapper {
 	 * @param cno
 	 * @return
 	 */
-	Clientcar selectByPrimaryKey(String cno);
+	List<Clientcar> selectByPrimaryKey(String clientno);
 
 	/**
 	 * 修改用户车辆

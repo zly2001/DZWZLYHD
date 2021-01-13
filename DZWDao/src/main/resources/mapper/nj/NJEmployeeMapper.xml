@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.nj.NJemployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Employee" >
+    <id column="employeeid" property="employeeid" jdbcType="VARCHAR" />
+    <result column="ephone" property="ephone" jdbcType="VARCHAR" />
+    <result column="epwd" property="epwd" jdbcType="VARCHAR" />
+    <result column="esex" property="esex" jdbcType="INTEGER" />
+    <result column="ecreid" property="ecreid" jdbcType="VARCHAR" />
+    <result column="eaddress" property="eaddress" jdbcType="VARCHAR" />
+    <result column="etrytimes" property="etrytimes" jdbcType="DATE" />
+    <result column="elaimes" property="elaimes" jdbcType="DATE" />
+    <result column="ezuant" property="ezuant" jdbcType="INTEGER" />
+    <result column="eyunayin" property="eyunayin" jdbcType="VARCHAR" />
+    <result column="phone1" property="phone1" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="deid" property="deid" jdbcType="INTEGER" />
+    <result column="statusid" property="statusid" jdbcType="INTEGER" />
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.accp.entity.Employee" extends="BaseResultMap" >
+    <result column="ename" property="ename" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    employeeid, ephone, epwd, esex, ecreid, eaddress, etrytimes, elaimes, ezuant, eyunayin, 
+    phone1, email, deid, statusid, positionid, column1, column2, column3, column4
+  </sql>
+  <sql id="Blob_Column_List" >
+    ename
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from employee
+    where employeeid = #{employeeid,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="queryAllEmployee" resultMap="ResultMapWithBLOBs" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from employee
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from employee
+    where employeeid = #{employeeid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Employee" >
+    insert into employee (employeeid, ephone, epwd, 
+      esex, ecreid, eaddress, 
+      etrytimes, elaimes, ezuant, 
+      eyunayin, phone1, email, 
+      deid, statusid, positionid, 
+      column1, column2, column3, 
+      column4, ename)
+    values (#{employeeid,jdbcType=VARCHAR}, #{ephone,jdbcType=VARCHAR}, #{epwd,jdbcType=VARCHAR}, 
+      #{esex,jdbcType=INTEGER}, #{ecreid,jdbcType=VARCHAR}, #{eaddress,jdbcType=VARCHAR}, 
+      #{etrytimes,jdbcType=DATE}, #{elaimes,jdbcType=DATE}, #{ezuant,jdbcType=INTEGER}, 
+      #{eyunayin,jdbcType=VARCHAR}, #{phone1,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{deid,jdbcType=INTEGER}, #{statusid,jdbcType=INTEGER}, #{positionid,jdbcType=INTEGER}, 
+      #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR}, 
+      #{column4,jdbcType=VARCHAR}, #{ename,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeid != null" >
+        employeeid,
+      </if>
+      <if test="ephone != null" >
+        ephone,
+      </if>
+      <if test="epwd != null" >
+        epwd,
+      </if>
+      <if test="esex != null" >
+        esex,
+      </if>
+      <if test="ecreid != null" >
+        ecreid,
+      </if>
+      <if test="eaddress != null" >
+        eaddress,
+      </if>
+      <if test="etrytimes != null" >
+        etrytimes,
+      </if>
+      <if test="elaimes != null" >
+        elaimes,
+      </if>
+      <if test="ezuant != null" >
+        ezuant,
+      </if>
+      <if test="eyunayin != null" >
+        eyunayin,
+      </if>
+      <if test="phone1 != null" >
+        phone1,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="deid != null" >
+        deid,
+      </if>
+      <if test="statusid != null" >
+        statusid,
+      </if>
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="ephone != null" >
+        #{ephone,jdbcType=VARCHAR},
+      </if>
+      <if test="epwd != null" >
+        #{epwd,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        #{esex,jdbcType=INTEGER},
+      </if>
+      <if test="ecreid != null" >
+        #{ecreid,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null" >
+        #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="etrytimes != null" >
+        #{etrytimes,jdbcType=DATE},
+      </if>
+      <if test="elaimes != null" >
+        #{elaimes,jdbcType=DATE},
+      </if>
+      <if test="ezuant != null" >
+        #{ezuant,jdbcType=INTEGER},
+      </if>
+      <if test="eyunayin != null" >
+        #{eyunayin,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null" >
+        #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        #{deid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Employee" >
+    update employee
+    <set >
+      <if test="ephone != null" >
+        ephone = #{ephone,jdbcType=VARCHAR},
+      </if>
+      <if test="epwd != null" >
+        epwd = #{epwd,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        esex = #{esex,jdbcType=INTEGER},
+      </if>
+      <if test="ecreid != null" >
+        ecreid = #{ecreid,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null" >
+        eaddress = #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="etrytimes != null" >
+        etrytimes = #{etrytimes,jdbcType=DATE},
+      </if>
+      <if test="elaimes != null" >
+        elaimes = #{elaimes,jdbcType=DATE},
+      </if>
+      <if test="ezuant != null" >
+        ezuant = #{ezuant,jdbcType=INTEGER},
+      </if>
+      <if test="eyunayin != null" >
+        eyunayin = #{eyunayin,jdbcType=VARCHAR},
+      </if>
+      <if test="phone1 != null" >
+        phone1 = #{phone1,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="deid != null" >
+        deid = #{deid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null" >
+        statusid = #{statusid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null" >
+        positionid = #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where employeeid = #{employeeid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.accp.entity.Employee" >
+    update employee
+    set ephone = #{ephone,jdbcType=VARCHAR},
+      epwd = #{epwd,jdbcType=VARCHAR},
+      esex = #{esex,jdbcType=INTEGER},
+      ecreid = #{ecreid,jdbcType=VARCHAR},
+      eaddress = #{eaddress,jdbcType=VARCHAR},
+      etrytimes = #{etrytimes,jdbcType=DATE},
+      elaimes = #{elaimes,jdbcType=DATE},
+      ezuant = #{ezuant,jdbcType=INTEGER},
+      eyunayin = #{eyunayin,jdbcType=VARCHAR},
+      phone1 = #{phone1,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      deid = #{deid,jdbcType=INTEGER},
+      statusid = #{statusid,jdbcType=INTEGER},
+      positionid = #{positionid,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR},
+      ename = #{ename,jdbcType=LONGVARCHAR}
+    where employeeid = #{employeeid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Employee" >
+    update employee
+    set ephone = #{ephone,jdbcType=VARCHAR},
+      epwd = #{epwd,jdbcType=VARCHAR},
+      esex = #{esex,jdbcType=INTEGER},
+      ecreid = #{ecreid,jdbcType=VARCHAR},
+      eaddress = #{eaddress,jdbcType=VARCHAR},
+      etrytimes = #{etrytimes,jdbcType=DATE},
+      elaimes = #{elaimes,jdbcType=DATE},
+      ezuant = #{ezuant,jdbcType=INTEGER},
+      eyunayin = #{eyunayin,jdbcType=VARCHAR},
+      phone1 = #{phone1,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      deid = #{deid,jdbcType=INTEGER},
+      statusid = #{statusid,jdbcType=INTEGER},
+      positionid = #{positionid,jdbcType=INTEGER},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where employeeid = #{employeeid,jdbcType=VARCHAR}
+  </update>
+</mapper>
