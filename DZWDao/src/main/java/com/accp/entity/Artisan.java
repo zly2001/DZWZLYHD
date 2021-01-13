@@ -32,8 +32,19 @@ public class Artisan extends ArtisanKey {
     private String column3;
 
     private String column4;
+    
+    //张来遇写的技工星级对象用于储存单个技工星级信息
+    private Stars Stars;
 
-    public String getAphone() {
+    public Stars getStars() {
+		return Stars;
+	}
+
+	public void setStars(Stars stars) {
+		Stars = stars;
+	}
+
+	public String getAphone() {
         return aphone;
     }
 

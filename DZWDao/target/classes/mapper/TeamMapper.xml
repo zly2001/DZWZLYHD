@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.TeamMapper">
-	<!-- selectAll,selectByArtisan:张来遇写的组合查询一个班组多个技工 -->
+	<!-- selectAll,selectByArtisan:张来遇写的组合查询一个班组多个技工,一个技工对应一个技工星级 -->
 	<!-- 查询所有班组 -->
 	<select id="selectAll" resultMap="BaseResultMap">
 		SELECT * FROM `team`
 	</select>
 
 	<!-- 根据班组id查询技工 -->
-	<select id="selectByArtisan"
-		resultType="com.accp.entity.Artisan">
-		SELECT * FROM `artisan` WHERE `tid`=#{0}
+	<select id="selectByArtisan" resultMap="ArtisanMap">
+		SELECT * FROM `artisan`
+		WHERE `tid`=#{0}
 	</select>
+
+	<!-- 根据技工星级id查询技工星级 -->
+	<select id="selectByStars" resultType="com.accp.entity.Stars">
+		SELECT * FROM `stars`
+		WHERE `sid`=#{0}
+	</select>
+
+	<!-- 技工星级map -->
+	<resultMap id="ArtisanMap" type="com.accp.entity.Artisan">
+		<id column="artisanid" property="artisanid" jdbcType="INTEGER" />
+		<!-- 一个技工对应一个技工星级 -->
+		<association column="sid" property="Stars"
+			select="selectByStars" />
+	</resultMap>
 
 
 	<resultMap id="BaseResultMap" type="com.accp.entity.Team">

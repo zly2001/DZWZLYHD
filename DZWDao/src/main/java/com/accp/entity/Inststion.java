@@ -18,7 +18,7 @@ public class Inststion {
     private String cno;
 
     private Integer izt;
-
+     
     private Date jdate;
 
     private Date jcday;
