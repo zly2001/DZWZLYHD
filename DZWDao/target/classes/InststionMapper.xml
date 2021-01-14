@@ -2,6 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.InststionMapper">
 
+	<!-- 张来遇写的根据维修状态和车牌号查询所有维修单与维修详情和救援记录改了Inststion.java文件和InststionMapper.xml文件 -->
+	<select id="selectAllByCnoAndStatusid" resultMap="BaseResultMap">
+		SELECT * FROM `inststion`
+		<where>
+			<if test="statusid != null and statusid != ''">
+				AND `statusid`=#{statusid}
+			</if>
+			<if test="cno != null and cno != ''">
+				AND `cno`=#{cno}
+			</if>			
+		</where>
+	</select>
+
+	<!-- 根据维修单号查询维修详情 -->
+	<select id="selectByWxxq" resultType="com.accp.entity.Wxxq">
+		SELECT * FROM `wxxq` WHERE
+		`inid`=#{0}
+	</select>
+
+	<!-- 根据维修单号查询救援记录 -->
+	<select id="selectByWorkcardesc"
+		resultType="com.accp.entity.Workcardesc">
+		SELECT * FROM `workcardesc` WHERE `inid`=#{0}
+	</select>
+
 	<!-- 张来遇改了lc的数据类型Integer ->Float -->
 	<resultMap id="BaseResultMap"
 		type="com.accp.entity.Inststion">
@@ -33,11 +58,21 @@
 		<result column="column2" property="column2" jdbcType="VARCHAR" />
 		<result column="column3" property="column3" jdbcType="VARCHAR" />
 		<result column="column4" property="column4" jdbcType="VARCHAR" />
+
+		<!-- 一个维修单对应多一个救援记录 -->
+		<association column="inid" property="Workcardesc"
+			select="selectByWorkcardesc" />
+
+		<!-- 一个维修单对应多个维修详情 -->
+		<collection column="inid" property="Wxxq"
+			select="selectByWxxq" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		inid, wid, statusid, casid, tid, workcarjlid, cno, izt, jdate, jcday,
+		inid, wid, statusid, casid, tid, workcarjlid, cno, izt,
+		jdate, jcday,
 		yjday, wgday,
-		iszn, lc, ifjs, insevent, zjy, zrr, zhgs, jyjg, itemsid, column1, column2,
+		iszn, lc, ifjs, insevent, zjy, zrr, zhgs,
+		jyjg, itemsid, column1, column2,
 		column3,
 		column4
 	</sql>
@@ -49,30 +84,40 @@
 		where inid = #{inid,jdbcType=VARCHAR}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from inststion
+		delete from
+		inststion
 		where inid = #{inid,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="com.accp.entity.Inststion">
-		insert into inststion (inid, wid, statusid,
+		insert into inststion (inid,
+		wid, statusid,
 		casid, tid, workcarjlid,
 		cno, izt, jdate, jcday,
-		yjday, wgday, iszn, lc,
+		yjday,
+		wgday, iszn, lc,
 		ifjs, insevent, zjy,
 		zrr, zhgs, jyjg, itemsid,
-		column1, column2, column3,
+		column1,
+		column2, column3,
 		column4)
-		values (#{inid,jdbcType=VARCHAR}, #{wid,jdbcType=INTEGER},
+		values (#{inid,jdbcType=VARCHAR},
+		#{wid,jdbcType=INTEGER},
 		#{statusid,jdbcType=INTEGER},
-		#{casid,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER}, #{workcarjlid,jdbcType=INTEGER},
-		#{cno,jdbcType=VARCHAR}, #{izt,jdbcType=INTEGER},
-		#{jdate,jdbcType=DATE}, #{jcday,jdbcType=DATE},
+		#{casid,jdbcType=VARCHAR}, #{tid,jdbcType=INTEGER},
+		#{workcarjlid,jdbcType=INTEGER},
+		#{cno,jdbcType=VARCHAR},
+		#{izt,jdbcType=INTEGER},
+		#{jdate,jdbcType=DATE},
+		#{jcday,jdbcType=DATE},
 		#{yjday,jdbcType=DATE}, #{wgday,jdbcType=DATE},
 		#{iszn,jdbcType=INTEGER}, #{lc,jdbcType=REAL},
 		#{ifjs,jdbcType=INTEGER}, #{insevent,jdbcType=VARCHAR},
 		#{zjy,jdbcType=VARCHAR},
-		#{zrr,jdbcType=VARCHAR}, #{zhgs,jdbcType=INTEGER}, #{jyjg,jdbcType=REAL},
+		#{zrr,jdbcType=VARCHAR},
+		#{zhgs,jdbcType=INTEGER}, #{jyjg,jdbcType=REAL},
 		#{itemsid,jdbcType=VARCHAR},
-		#{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
+		#{column1,jdbcType=VARCHAR},
+		#{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
 		#{column4,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective"
@@ -317,28 +362,39 @@
 		update inststion
 		set wid = #{wid,jdbcType=INTEGER},
 		statusid = #{statusid,jdbcType=INTEGER},
-		casid = #{casid,jdbcType=VARCHAR},
+		casid =
+		#{casid,jdbcType=VARCHAR},
 		tid = #{tid,jdbcType=INTEGER},
-		workcarjlid = #{workcarjlid,jdbcType=INTEGER},
+		workcarjlid =
+		#{workcarjlid,jdbcType=INTEGER},
 		cno = #{cno,jdbcType=VARCHAR},
-		izt = #{izt,jdbcType=INTEGER},
+		izt =
+		#{izt,jdbcType=INTEGER},
 		jdate = #{jdate,jdbcType=DATE},
-		jcday = #{jcday,jdbcType=DATE},
+		jcday =
+		#{jcday,jdbcType=DATE},
 		yjday = #{yjday,jdbcType=DATE},
-		wgday = #{wgday,jdbcType=DATE},
+		wgday =
+		#{wgday,jdbcType=DATE},
 		iszn = #{iszn,jdbcType=INTEGER},
-		lc = #{lc,jdbcType=REAL},
+		lc =
+		#{lc,jdbcType=REAL},
 		ifjs = #{ifjs,jdbcType=INTEGER},
-		insevent = #{insevent,jdbcType=VARCHAR},
+		insevent =
+		#{insevent,jdbcType=VARCHAR},
 		zjy = #{zjy,jdbcType=VARCHAR},
-		zrr = #{zrr,jdbcType=VARCHAR},
+		zrr =
+		#{zrr,jdbcType=VARCHAR},
 		zhgs = #{zhgs,jdbcType=INTEGER},
-		jyjg = #{jyjg,jdbcType=REAL},
+		jyjg =
+		#{jyjg,jdbcType=REAL},
 		itemsid = #{itemsid,jdbcType=VARCHAR},
-		column1 = #{column1,jdbcType=VARCHAR},
+		column1 =
+		#{column1,jdbcType=VARCHAR},
 		column2 = #{column2,jdbcType=VARCHAR},
 		column3 = #{column3,jdbcType=VARCHAR},
-		column4 = #{column4,jdbcType=VARCHAR}
+		column4 =
+		#{column4,jdbcType=VARCHAR}
 		where inid = #{inid,jdbcType=VARCHAR}
 	</update>
 </mapper>

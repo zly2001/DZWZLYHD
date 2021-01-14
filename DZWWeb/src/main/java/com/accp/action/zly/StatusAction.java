@@ -15,47 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.zly.InststionMapperBiz;
-import com.accp.entity.Inststion;
+import com.accp.biz.zly.StatusBiz;
+import com.accp.entity.Status;
 
 @RestController
-@RequestMapping("/zly/api/InststionAction")
-public class InststionAction {
+@RequestMapping("/zly/api/StatusAction")
+public class StatusAction {
 
 	@Resource
-	private InststionMapperBiz biz;
+	private StatusBiz biz;
 	
-	@GetMapping("{inid}")
+	@GetMapping("{statusid}")
 	/**
 	 * 根据维修单号查询维修
-	 * @param inid
-	 * @return
-	 */
-	public Inststion selectByPrimaryKey(@PathVariable String inid) {
-		return biz.selectByPrimaryKey(inid);
-	}
-	
-	@PostMapping("selectAllByCnoAndStatusid")
-	/**
-	 * 张来遇写的根据维修状态和车牌号查询所有维修单与维修详情和救援记录改了Inststion.java文件和InststionMapper.xml文件
-	 * 
-	 * @param cno
 	 * @param statusid
 	 * @return
 	 */
-	public List<Inststion> selectAllByCnoAndStatusid(@RequestBody Map<String, Object> map) {
-		return biz.selectAllByCnoAndStatusid(map.get("cno").toString(), map.get("statusid").toString());
+	public Status selectByPrimaryKey(@PathVariable Integer statusid) {
+		return biz.selectByPrimaryKey(statusid);
+	}
+	
+	@GetMapping("selectAllByType/{type}")
+	/**
+	 * 张来遇写的根据状态类型查询不同的状态集合改了StatusMapper.xml文件
+	 * @param type
+	 * @return
+	 */
+	public List<Status> selectAllByType(@PathVariable String type){
+		return biz.selectAllByType(type);
 	}
 	
 	@PostMapping
 	/**
 	 * 新增维修单
-	 * @param inststion
+	 * @param Status
 	 * @return
 	 */
-	public Map<String,String> insertSelective(@RequestBody Inststion inststion) {		
+	public Map<String,String> insertSelective(@RequestBody Status Status) {		
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.insertSelective(inststion) > 0) {
+		if (biz.insertSelective(Status) > 0) {
 			map.put("code", "200");
 			map.put("msg", "成功!");			
 		} else {
@@ -68,12 +66,12 @@ public class InststionAction {
 	@PutMapping
 	/**
 	 * 修改维修单
-	 * @param inststion
+	 * @param Status
 	 * @return
 	 */
-	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Inststion inststion) {
+	public Map<String, String> updateByPrimaryKeySelective(@RequestBody Status Status) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.updateByPrimaryKeySelective(inststion) > 0) {
+		if (biz.updateByPrimaryKeySelective(Status) > 0) {
 			map.put("code", "200");
 			map.put("msg", "成功!");			
 		} else {
@@ -86,12 +84,12 @@ public class InststionAction {
 	@DeleteMapping
 	/**
 	 * 删除维修单
-	 * @param inid
+	 * @param statusid
 	 * @return
 	 */
-	public Map<String, String> deleteByPrimaryKey(String inid) {
+	public Map<String, String> deleteByPrimaryKey(Integer statusid) {
 		Map<String, String> map = new HashMap<String, String>();
-		if (biz.deleteByPrimaryKey(inid) > 0) {
+		if (biz.deleteByPrimaryKey(statusid) > 0) {
 			map.put("code", "200");
 			map.put("msg", "成功!");			
 		} else {
