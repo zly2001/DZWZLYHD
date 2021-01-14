@@ -41,8 +41,8 @@ public class WorkcarBiz {
 	 * 
 	 * @return
 	 */
-	public List<Workcar> selectAllByWorkcar() {
-		return dao.selectAllByWorkcar();
+	public List<Workcar> selectAllByWorkcar(String statusid) {
+		return dao.selectAllByWorkcar(statusid);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false, rollbackFor = {

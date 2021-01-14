@@ -35,13 +35,13 @@ public class WorkcarAction {
 		return biz.selectByPrimaryKey(wid);
 	}
 	
-	@GetMapping()
+	@GetMapping("/selectAllByWorkcar/{statusid}")
 	/**
 	 * 张来遇写查询出所有空闲状态中的救援车辆
 	 * @return
 	 */
-	public  List<Workcar> selectAllByWorkcar() {
-		return biz.selectAllByWorkcar();
+	public  List<Workcar> selectAllByWorkcar(@PathVariable String statusid) {
+		return biz.selectAllByWorkcar(statusid);
 	}
 	
 	@PostMapping
