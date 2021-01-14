@@ -1,6 +1,7 @@
 package com.accp.action.nj;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -23,11 +24,21 @@ public class NjClientAction {
 	@Resource
 	private ClientBiz biz;
 	
-	@PostMapping
-	/**
+	@PostMapping("queryAll")
+	/***
 	 * 查询所有用户信息
 	 */
-	public Map<String,String> queryAllClient(HttpSession session, @RequestBody String clientno){
+	public List<Client> queryAllClient(HttpSession session){
+		
+		List<Client> client1=biz.queryAllClientMessage();
+		
+		return client1;		
+	}
+	@PostMapping("/queryUser/{clientno}")
+	/**
+	 * 查询单个用户信息
+	 */
+	public Map<String,String> queryClient(HttpSession session, @PathVariable String clientno){
 		Map<String, String> map = new HashMap<String, String>();
 		Client client1=biz.selectClient(clientno);
 		if (client1 != null) {
@@ -59,7 +70,7 @@ public class NjClientAction {
 	/***
 	 * 修改用户信息
 	 */
-	@PutMapping
+	@PutMapping("update")
 	public Map<String, String> updateClient(@RequestBody Client client) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -76,7 +87,7 @@ public class NjClientAction {
 	/**
 	 * 删除用户信息
 	 */
-	@DeleteMapping
+	@DeleteMapping("/delete/{clientno}")
 	public Map<String, String> deleteClient(@PathVariable String clientno) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -91,4 +102,6 @@ public class NjClientAction {
 	}
 	
 
+	
+	
 }

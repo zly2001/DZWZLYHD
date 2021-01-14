@@ -54,7 +54,7 @@
       <if test="wid != null" >
         wid,
       </if>
-      <if test="workcarfirstdate != null" >
+      <if test="workcarfirstdate == null" >
         workcarfirstdate,
       </if>
       <if test="workcarenddate != null" >
@@ -95,8 +95,8 @@
       <if test="wid != null" >
         #{wid,jdbcType=INTEGER},
       </if>
-      <if test="workcarfirstdate != null" >
-        #{workcarfirstdate,jdbcType=DATE},
+      <if test="workcarfirstdate == null" >
+        NOW(),
       </if>
       <if test="workcarenddate != null" >
         #{workcarenddate,jdbcType=DATE},
@@ -139,8 +139,8 @@
       <if test="workcarfirstdate != null" >
         workcarfirstdate = #{workcarfirstdate,jdbcType=DATE},
       </if>
-      <if test="workcarenddate != null" >
-        workcarenddate = #{workcarenddate,jdbcType=DATE},
+      <if test="workcarenddate == null" >
+        workcarenddate = NOW(),
       </if>
       <if test="firstaddress != null" >
         firstaddress = #{firstaddress,jdbcType=VARCHAR},

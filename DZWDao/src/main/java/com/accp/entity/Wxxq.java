@@ -1,5 +1,7 @@
 package com.accp.entity;
 
+import java.util.Date;
+
 public class Wxxq {
     private Integer xqid;
 
@@ -15,7 +17,7 @@ public class Wxxq {
 
     private Float xmoney;
 
-    private String xdate;
+    private Date xdate;
 
     private String column1;
 
@@ -81,12 +83,12 @@ public class Wxxq {
         this.xmoney = xmoney;
     }
 
-    public String getXdate() {
+    public Date getXdate() {
         return xdate;
     }
 
-    public void setXdate(String xdate) {
-        this.xdate = xdate == null ? null : xdate.trim();
+    public void setXdate(Date xdate) {
+        this.xdate = xdate;
     }
 
     public String getColumn1() {

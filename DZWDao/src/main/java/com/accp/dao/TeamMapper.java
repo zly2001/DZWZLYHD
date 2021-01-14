@@ -1,5 +1,7 @@
 package com.accp.dao;
 
+import java.util.List;
+
 import com.accp.entity.Team;
 
 public interface TeamMapper {
@@ -10,6 +12,9 @@ public interface TeamMapper {
     int insertSelective(Team record);
 
     Team selectByPrimaryKey(Integer tid);
+    
+    //张来遇写的用于查询所有班组以及班组下的技工(动了TeamMapper.xml文件)
+    List<Team> selectAll();
 
     int updateByPrimaryKeySelective(Team record);
 
