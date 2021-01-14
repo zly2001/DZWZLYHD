@@ -19,7 +19,7 @@ public class Position {
 
     private String column4;
     
-    private List<Function> functions = new ArrayList<Function>(); 
+    private List<Function> functions; 
 
     public List<Function> getFunctions() {
 		return functions;

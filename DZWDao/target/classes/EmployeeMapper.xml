@@ -99,14 +99,15 @@ WHERE e.ezuant = 0
 			<id column="fid" property="fid" />
 			<result column="fcode" property="fcode" />
 			<result column="fname" property="fname" />
+			<result column="fpid" property="fpid" />
 			<result column="createdate" property="createdate" />
-			<association property="fpid" column="fpid"
+			<association property="fpida" column="fpid"
 				select="selectParentFun"></association>
 		</collection>
   </resultMap>
   
   <select id="selectParentFun" resultType="com.accp.entity.Function">
-		select * from tbl_function where fid=#{0}
+		select * from function where fid=#{0}
 	</select>
 	<select id="queryUserWithRole" resultMap="EmployeeMap">
 		SELECT e.employeeid,e.epwd,p.positionid,p.positionname,f.fid,f.fcode,f.fname,f.fpid,f.createdate   FROM employee AS e

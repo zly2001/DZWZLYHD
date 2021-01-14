@@ -32,12 +32,13 @@ public class Function {
 	}
 	private String fcode;
 	private String fname;
-	private Function fpid;
-	public Function getFpid() {
-		return fpid;
+	private Integer fpid;
+	private Function fpida;
+	public Function getFpida() {
+		return fpida;
 	}
-	public void setFpid(Function fpid) {
-		this.fpid = fpid;
+	public void setFpida(Function fpida) {
+		this.fpida = fpida;
 	}
 	private Date createdate;
 }
