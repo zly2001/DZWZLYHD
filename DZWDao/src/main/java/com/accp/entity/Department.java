@@ -1,5 +1,7 @@
 package com.accp.entity;
 
+import java.util.List;
+
 public class Department {
     private Integer deid;
 
@@ -15,7 +17,7 @@ public class Department {
 
     private String column4;
 
-    public Integer getDeid() {
+	public Integer getDeid() {
         return deid;
     }
 

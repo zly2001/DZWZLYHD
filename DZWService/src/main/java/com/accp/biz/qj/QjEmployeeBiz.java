@@ -1,5 +1,7 @@
 package com.accp.biz.qj;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.qj.QjEmployeeMapper;
 import com.accp.entity.Employee;
+import com.accp.entity.EmployeeVO;
 
 @Service
 /**
@@ -35,16 +38,25 @@ public class QjEmployeeBiz {
 	 * 查询所有员工信息(在职)
 	 * @return
 	 */
-	public Employee selectAll() {
-		return ema.selectAll();
+	//public Employee selectAll() {
+		//return ema.selectAll();
+	//}
+	
+//	public List<Employee> selectEmploee(){
+//		return ema.selectAllaa();
+//	}
+	
+	public List<EmployeeVO> selectAll(){
+		return ema.getVo();
 	}
+	
 	
 	/**
 	 * 模糊查询
 	 * @param ename
 	 * @return
 	 */
-	public Employee selectByename(String ename) {
+	public List<EmployeeVO> selectByename(String ename) {
 		return ema.selectByename(ename);
 	}
 	
@@ -79,8 +91,8 @@ public class QjEmployeeBiz {
 	 * 查询所有离职员工
 	 * @return
 	 */
-	public Employee selectBystatusid() {
-		return ema.selectBystatusid();
+	public List<EmployeeVO> selectBystatusid() {
+		return ema.selectLizhi();
 	}
 	
 	/**
@@ -99,5 +111,11 @@ public class QjEmployeeBiz {
 		return ema.deleteByPrimaryKey(employeeid);
 	}
 	
-	
+	/**
+	 * 根据id查员工
+	 * @return
+	 */
+	public Employee selectByEmployeeid(String employeeid) {
+		return ema.selectByPrimaryKey(employeeid);
+	}
 }

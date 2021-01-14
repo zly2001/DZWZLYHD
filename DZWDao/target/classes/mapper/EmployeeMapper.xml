@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.EmployeeMapper" >
+<mapper namespace="com.accp.dao.qj.QjEmployeeMapper" >
   <resultMap id="BaseResultMap" type="com.accp.entity.Employee" >
     <id column="employeeid" property="employeeid" jdbcType="VARCHAR" />
     <result column="ephone" property="ephone" jdbcType="VARCHAR" />
@@ -25,6 +25,51 @@
   <resultMap id="ResultMapWithBLOBs" type="com.accp.entity.Employee" extends="BaseResultMap" >
     <result column="ename" property="ename" jdbcType="LONGVARCHAR" />
   </resultMap>
+  
+  <resultMap type="com.accp.entity.Employee" id="De">
+        <result column="deid" property="deid" jdbcType="INTEGER" />
+        <result column="positionid" property="positionid" jdbcType="INTEGER" />
+        <association property="department" column="deid" select="getDe"/>
+         <association property="position" column="positionid" select="getPo"/>
+  </resultMap>
+  <select id="selectAllaa" resultMap="De">
+   select * from employee where ezuant = 1
+  </select>
+  <select id="getDe" resultType="com.accp.entity.Department">
+   select * from department WHERE deid=#{deid}
+  </select>
+  <select id="getPo" resultType="com.accp.entity.Position">
+   select * from position WHERE positionid=#{positionid}
+  </select>
+  
+  <select id="getVo" resultType="com.accp.entity.EmployeeVO">
+  	SELECT  e.ename,e.esex,e.employeeid,e.etrytimes,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename,e.phone1,e.email   FROM employee AS e 
+INNER JOIN POSITION AS p
+ON e.positionid = p.positionid
+INNER JOIN department AS d
+ON e.deid = d.deid
+WHERE e.ezuant = 1
+  </select>
+  
+  <select id="selectByename" resultType="com.accp.entity.EmployeeVO">
+  	SELECT  e.ename,e.esex,e.employeeid,e.etrytimes,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename   FROM employee AS e 
+INNER JOIN POSITION AS p
+ON e.positionid = p.positionid
+INNER JOIN department AS d
+ON e.deid = d.deid
+WHERE e.ezuant = 1 and e.ename like '%${ename}%'
+  </select>
+  
+  <select id="selectLizhi" resultType="com.accp.entity.EmployeeVO">
+  	SELECT  e.ename,e.esex,e.employeeid,e.etrytimes,e.elaimes,e.eyunayin,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename   FROM employee AS e 
+INNER JOIN POSITION AS p
+ON e.positionid = p.positionid
+INNER JOIN department AS d
+ON e.deid = d.deid
+WHERE e.ezuant = 0 
+  </select>
+      
+      
   <sql id="Base_Column_List" >
     employeeid, ephone, epwd, esex, ecreid, eaddress, etrytimes, elaimes, ezuant, eyunayin, 
     phone1, email, deid, statusid, positionid, column1, column2, column3, column4

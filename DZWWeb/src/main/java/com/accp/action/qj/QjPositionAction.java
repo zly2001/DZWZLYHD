@@ -29,7 +29,6 @@ public class QjPositionAction {
 	 * @return
 	 */
 	@GetMapping
-	//fdzx
 	public List<Position> queryPosition(){
 		return pbiz.selectAll();
 	}
