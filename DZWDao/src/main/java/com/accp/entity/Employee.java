@@ -14,7 +14,8 @@ public class Employee {
     private String ecreid;
 
     private String eaddress;
-
+    
+    
     private Date etrytimes;
 
     private Date elaimes;
@@ -42,8 +43,30 @@ public class Employee {
     private String column4;
 
     private String ename;
+    
+    public Position getPosition() {
+		return position;
+	}
 
-    public String getEmployeeid() {
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
+	private Position position;
+    
+    public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	private Department department;
+
+  
+
+	public String getEmployeeid() {
         return employeeid;
     }
 

@@ -11,7 +11,7 @@ public interface EmployeeMapper {
     int insert(Employee record);
 
     int insertSelective(@Param("record")Employee record);
-
+    
     Employee selectByPrimaryKey(String employeeid);
     
     @Select("SELECT * FROM `employee` WHERE `employeeid`='1001' AND `epwd`='1001'")
@@ -22,5 +22,7 @@ public interface EmployeeMapper {
     int updateByPrimaryKeyWithBLOBs(Employee record);
 
     int updateByPrimaryKey(Employee record);
+    
+    
     
 }
