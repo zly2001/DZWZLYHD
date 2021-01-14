@@ -23,12 +23,7 @@ public class Function {
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
-	public Integer getFpid() {
-		return fpid;
-	}
-	public void setFpid(Integer fpid) {
-		this.fpid = fpid;
-	}
+	
 	public Date getCreatedate() {
 		return createdate;
 	}
@@ -38,5 +33,12 @@ public class Function {
 	private String fcode;
 	private String fname;
 	private Integer fpid;
+	private Function fpida;
+	public Function getFpida() {
+		return fpida;
+	}
+	public void setFpida(Function fpida) {
+		this.fpida = fpida;
+	}
 	private Date createdate;
 }

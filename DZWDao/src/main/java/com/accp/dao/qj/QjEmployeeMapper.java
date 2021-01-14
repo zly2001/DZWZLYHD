@@ -43,5 +43,7 @@ public interface QjEmployeeMapper {
     //模糊在职
     List<EmployeeVO> selectByename(@Param("ename")String ename);
     
+    //登录
+    Employee queryUserWithRole(@Param("employeeid")String employeeid,@Param("epwd")String epwd);
     
 }
