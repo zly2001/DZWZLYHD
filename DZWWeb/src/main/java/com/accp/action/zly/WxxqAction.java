@@ -43,8 +43,7 @@ public class WxxqAction {
 	public Map<String,String> insertSelective(@RequestBody Wxxq[] Wxxqs) {		
 		Map<String, String> map = new HashMap<String, String>();
 		try {
-			for (Wxxq w : Wxxqs) {
-				w.setInid(Wxxqs[0].getInid());
+			for (Wxxq w : Wxxqs) {				
 				biz.insertSelective(w);
 			}
 			map.put("code", "200");
