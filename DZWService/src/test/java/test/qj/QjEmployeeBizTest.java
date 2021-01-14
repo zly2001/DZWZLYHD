@@ -31,4 +31,9 @@ public class QjEmployeeBizTest {
 		System.out.println(biz.selectByEmployeeid("1002").getEname());
 		
 	}
+	
+	@Test
+	public void test2() {
+		biz.selectByLogin("1003", "12345");
+	}
 }

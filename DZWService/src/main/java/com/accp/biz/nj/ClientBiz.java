@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.ClientMapper;
 import com.accp.dao.ClientcarMapper;
-import com.accp.dao.nj.NJClientMapper;
+import com.accp.dao.nj.NjClientCarMapper;
 import com.accp.entity.Client;
 
 @Service

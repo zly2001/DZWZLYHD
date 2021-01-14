@@ -35,16 +35,17 @@ public class QjEmployeeAction {
 	 * @param employee
 	 * @return
 	 */
-	public Map<String,String> selectByLogin(HttpSession session, @RequestBody Employee employee){
-		Map<String, String> map = new HashMap<String, String>();
+	public Map<String,Object> selectByLogin(HttpSession session, @RequestBody Employee employee){
+		Map<String, Object> map = new HashMap<String, Object>();
 		Employee employees = biz.selectByLogin(employee.getEmployeeid(), employee.getEpwd());
 		if (employees != null) {
 			map.put("code", "200");
 			map.put("msg", "成功!");
-			session.setAttribute("employees", employees);
+			session.setAttribute("Employees", employees);
+			map.put("employee",employees);
 		} else {
-			map.put("code", "500");
-			map.put("msg", "失败!");
+			map.put("code", "300");
+			map.put("msg", "login_error!");
 		}
 		return map;		
 	}

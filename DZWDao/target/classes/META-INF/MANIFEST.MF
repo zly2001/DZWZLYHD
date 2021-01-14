@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: 86176
-=======
-Built-By: Administrator
->>>>>>> 8fad9535a9be83dca724f0525f4097939e5dc59e
 Build-Jdk: 1.8.0_152
 Created-By: Maven Integration for Eclipse
 
