@@ -19,7 +19,7 @@
     column4
   </sql>
   
-  <select id="selectAll2" resultType="com.accp.entity.ItemsVO">
+  <select id="selectAll2" resultType="com.accp.entity.lp.ItemsVO">
   SELECT itemsid,Brandname,itemsname,itemsprice,itemsxh,itemstime,firmname FROM items,brand,firm WHERE brand.Brandid = items.itemsxh AND firm.firmid=items.column1 and itemsname  like '%${bh}%'
   </select>
   
