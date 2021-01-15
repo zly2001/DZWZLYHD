@@ -22,8 +22,7 @@
 	</select>
 
 	<!-- 根据维修单号查询救援记录 -->
-	<select id="selectByWorkcardesc"
-		resultType="com.accp.entity.Workcardesc">
+	<select id="selectByWorkcardesc" resultType="com.accp.entity.Workcardesc">
 		SELECT * FROM `workcardesc` WHERE `inid`=#{0}
 	</select>
 
@@ -83,11 +82,13 @@
 		from inststion
 		where inid = #{inid,jdbcType=VARCHAR}
 	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
 		delete from
 		inststion
 		where inid = #{inid,jdbcType=VARCHAR}
 	</delete>
+	
 	<insert id="insert" parameterType="com.accp.entity.Inststion">
 		insert into inststion (inid,
 		wid, statusid,
@@ -120,6 +121,8 @@
 		#{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
 		#{column4,jdbcType=VARCHAR})
 	</insert>
+	
+	
 	<insert id="insertSelective"
 		parameterType="com.accp.entity.Inststion">
 		insert into inststion
