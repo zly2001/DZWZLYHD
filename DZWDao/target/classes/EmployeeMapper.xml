@@ -68,6 +68,57 @@ INNER JOIN department AS d
 ON e.deid = d.deid
 WHERE e.ezuant = 0 
   </select>
+  
+  
+  <resultMap id="EmployeeMap" type="com.accp.entity.Employee" >
+    <id column="employeeid" property="employeeid" jdbcType="VARCHAR" />
+    <result column="ephone" property="ephone" jdbcType="VARCHAR" />
+    <result column="epwd" property="epwd" jdbcType="VARCHAR" />
+    <result column="esex" property="esex" jdbcType="INTEGER" />
+    <result column="ecreid" property="ecreid" jdbcType="VARCHAR" />
+    <result column="eaddress" property="eaddress" jdbcType="VARCHAR" />
+    <result column="etrytimes" property="etrytimes" jdbcType="DATE" />
+    <result column="elaimes" property="elaimes" jdbcType="DATE" />
+    <result column="ezuant" property="ezuant" jdbcType="INTEGER" />
+    <result column="eyunayin" property="eyunayin" jdbcType="VARCHAR" />
+    <result column="phone1" property="phone1" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="deid" property="deid" jdbcType="INTEGER" />
+    <result column="statusid" property="statusid" jdbcType="INTEGER" />
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+    <association property="position" resultMap="PositionMap" />
+  </resultMap>
+  <resultMap type="com.accp.entity.Position" id="PositionMap">
+  		<id column="positionid" property="positionid" />
+		<result column="positionname" property="positionname" />
+		<collection property="functions" ofType="com.accp.entity.Function">
+			<id column="fid" property="fid" />
+			<result column="fcode" property="fcode" />
+			<result column="fname" property="fname" />
+			<result column="fpid" property="fpid" />
+			<result column="createdate" property="createdate" />
+			<association property="fpida" column="fpid"
+				select="selectParentFun"></association>
+		</collection>
+  </resultMap>
+  
+  <select id="selectParentFun" resultType="com.accp.entity.Function">
+		select * from function where fid=#{0}
+	</select>
+	<select id="queryUserWithRole" resultMap="EmployeeMap">
+		SELECT e.employeeid,e.epwd,p.positionid,p.positionname,f.fid,f.fcode,f.fname,f.fpid,f.createdate   FROM employee AS e
+INNER JOIN POSITION AS p
+ON e.positionid = p.positionid
+INNER JOIN authority AS a 
+ON a.positionid = p.positionid
+INNER JOIN FUNCTION AS f
+ON a.functionId = f.fid
+WHERE e.employeeid = #{employeeid} AND e.epwd = #{epwd}
+	</select>
       
       
   <sql id="Base_Column_List" >

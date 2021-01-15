@@ -31,7 +31,7 @@ public class QjEmployeeBiz {
 	 * @return
 	 */
 	public Employee selectByLogin(String employeeid, String epwd) {
-		return ema.selectByLogin(employeeid, epwd);
+		return ema.queryUserWithRole(employeeid, epwd);
 	}
 	
 	/**

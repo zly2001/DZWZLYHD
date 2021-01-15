@@ -1,5 +1,9 @@
 package com.accp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Position {
     private Integer positionid;
 
@@ -14,8 +18,18 @@ public class Position {
     private String column3;
 
     private String column4;
+    
+    private List<Function> functions; 
 
-    public Integer getPositionid() {
+    public List<Function> getFunctions() {
+		return functions;
+	}
+
+	public void setFunctions(List<Function> functions) {
+		this.functions = functions;
+	}
+
+	public Integer getPositionid() {
         return positionid;
     }
 
