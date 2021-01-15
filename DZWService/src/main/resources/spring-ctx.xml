@@ -45,11 +45,11 @@
 		<!-- 绑定Mapper.xml文件 -->
 		<property name="mapperLocations">
 			<list>
-				<!-- <value>classpath:/mapper/zly/*.xml</value>
-				<value>classpath:/mapper/lp/*.xml</value>
+				<!-- <value>classpath:/mapper/zly/*.xml</value>				
 				<value>classpath:/mapper/qj/*.xml</value>				
 				<value>classpath:/mapper/ljy/*.xml</value> -->
 				
+				<value>classpath:/mapper/lp/*.xml</value>
 				<value>classpath:/mapper/nj/*.xml</value>
 				<value>classpath:/mapper/*.xml</value>
 			</list>
