@@ -4,8 +4,11 @@
 
 	<!-- 张来遇写的根据维修状态和车牌号查询所有维修单与维修详情和救援记录改了Inststion.java文件和InststionMapper.xml文件 -->
 	<select id="selectAllByCnoAndStatusid" resultMap="BaseResultMap">
-		SELECT * FROM `inststion`
-		<where>
+		SELECT i.* FROM `inststion` i INNER JOIN `status` s ON i.`statusid`=s.`statusid`
+		<where>			 
+			 <if test="type != null and type != ''">
+				AND s.`type`=1
+			</if>
 			<if test="statusid != null and statusid != ''">
 				AND `statusid`=#{statusid}
 			</if>
@@ -315,8 +318,8 @@
 			<if test="yjday != null">
 				yjday = #{yjday,jdbcType=DATE},
 			</if>
-			<if test="wgday != null">
-				wgday = #{wgday,jdbcType=DATE},
+			<if test="statusid == 3">
+				wgday = NOW(),
 			</if>
 			<if test="iszn != null">
 				iszn = #{iszn,jdbcType=INTEGER},

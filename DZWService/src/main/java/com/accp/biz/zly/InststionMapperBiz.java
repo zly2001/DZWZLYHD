@@ -42,8 +42,8 @@ public class InststionMapperBiz {
 	 * @param statusid
 	 * @return
 	 */
-	public List<Inststion> selectAllByCnoAndStatusid(String cno, String statusid) {
-		return dao.selectAllByCnoAndStatusid(cno, statusid);
+	public List<Inststion> selectAllByCnoAndStatusid(String cno, String statusid, String type) {
+		return dao.selectAllByCnoAndStatusid(cno, statusid, type);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false, rollbackFor = {

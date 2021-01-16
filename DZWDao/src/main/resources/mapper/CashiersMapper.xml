@@ -55,7 +55,7 @@
       <if test="paymenttemp != null" >
         paymenttemp,
       </if>
-      <if test="casdate != null" >
+      <if test="casdate == null" >
         casdate,
       </if>
       <if test="column1 != null" >
@@ -87,8 +87,8 @@
       <if test="paymenttemp != null" >
         #{paymenttemp,jdbcType=VARCHAR},
       </if>
-      <if test="casdate != null" >
-        #{casdate,jdbcType=DATE},
+      <if test="casdate == null" >
+        NOW(),
       </if>
       <if test="column1 != null" >
         #{column1,jdbcType=VARCHAR},
