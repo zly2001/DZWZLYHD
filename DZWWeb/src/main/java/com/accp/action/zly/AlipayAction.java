@@ -30,8 +30,16 @@ public class AlipayAction {
 	 * @param session
 	 * @param Cashiers
 	 */
-	public Integer insertSelective(HttpSession session, Cashiers Cashiers) {		
-		return biz.insertSelective(Cashiers);
+	@RequestMapping("insert")
+	public String insertSelective(HttpSession session, Cashiers Cashiers) {		
+		String url="";
+		if (biz.insertSelective((Cashiers)session.getAttribute("Cashiers")) > 0) {
+			url="";
+		}
+		else {
+			url="";
+		}
+		return "";
 	}
 
 	@RequestMapping("SXZFZLY")
@@ -40,7 +48,7 @@ public class AlipayAction {
 	 * 
 	 * @return
 	 */
-	public void SXZFZLY(HttpSession session, HttpServletRequest request, HttpServletResponse response)
+	public String SXZFZLY(HttpSession session, HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, AlipayApiException {
 		// 创建收银对象
 		// 获得初始化的AlipayClient
@@ -74,7 +82,7 @@ public class AlipayAction {
 		cashiers.setColumn1(subject);
 		cashiers.setColumn2(body);		
 
-		this.insertSelective(session, cashiers);
+		session.setAttribute("Cashiers", cashiers);
 
 		alipayRequest.setBizContent("{\"out_trade_no\":\"" + out_trade_no + "\"," + "\"total_amount\":\"" + total_amount
 				+ "\"," + "\"subject\":\"" + subject + "\"," + "\"body\":\"" + body + "\","
@@ -94,5 +102,6 @@ public class AlipayAction {
 
 		// 输出
 		// out.println(result);
+		return result;
 	}
 }
