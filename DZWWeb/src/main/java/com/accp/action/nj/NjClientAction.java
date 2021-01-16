@@ -17,30 +17,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.nj.ClientBiz;
 import com.accp.entity.Client;
 
-
 @RestController
 @RequestMapping("/nj/api/NjClientAction")
 public class NjClientAction {
 	@Resource
 	private ClientBiz biz;
-	
+
 	@PostMapping("queryAll")
 	/***
 	 * 查询所有用户信息
 	 */
-	public List<Client> queryAllClient(HttpSession session){
-		
-		List<Client> client1=biz.queryAllClientMessage();
-		
-		return client1;		
+	public List<Client> queryAllClient(HttpSession session) {
+
+		List<Client> client1 = biz.queryAllClientMessage();
+
+		return client1;
 	}
+
 	@PostMapping("/queryUser/{clientno}")
 	/**
 	 * 查询单个用户信息
 	 */
-	public Map<String,String> queryClient(HttpSession session, @PathVariable String clientno){
+	public Map<String, String> queryClient(HttpSession session, @PathVariable String clientno) {
 		Map<String, String> map = new HashMap<String, String>();
-		Client client1=biz.selectClient(clientno);
+		Client client1 = biz.selectClient(clientno);
 		if (client1 != null) {
 			map.put("code", "200");
 			map.put("msg", "成功!");
@@ -49,8 +49,9 @@ public class NjClientAction {
 			map.put("code", "500");
 			map.put("msg", "失败!");
 		}
-		return map;		
+		return map;
 	}
+
 	/**
 	 * 新增用户信息
 	 */
@@ -67,6 +68,7 @@ public class NjClientAction {
 		}
 		return map;
 	}
+
 	/***
 	 * 修改用户信息
 	 */
@@ -83,7 +85,7 @@ public class NjClientAction {
 		}
 		return map;
 	}
-	
+
 	/**
 	 * 删除用户信息
 	 */
@@ -100,8 +102,5 @@ public class NjClientAction {
 		}
 		return map;
 	}
-	
 
-	
-	
 }
