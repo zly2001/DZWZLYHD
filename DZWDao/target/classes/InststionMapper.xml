@@ -7,10 +7,10 @@
 		SELECT i.* FROM `inststion` i INNER JOIN `status` s ON i.`statusid`=s.`statusid`
 		<where>			 
 			 <if test="type != null and type != ''">
-				AND s.`type`=1
+				AND s.`type`=#{type}
 			</if>
 			<if test="statusid != null and statusid != ''">
-				AND `statusid`=#{statusid}
+				AND i.`statusid`=#{statusid}
 			</if>
 			<if test="cno != null and cno != ''">
 				AND `cno`=#{cno}

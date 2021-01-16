@@ -34,13 +34,13 @@ public class TeamAction {
 		return biz.selectByPrimaryKey(tid);
 	}
 	
-	@GetMapping("selectAll")
+	@GetMapping("selectAll/{type}")
 	/**
 	 * 张来遇写的用于查询所有班组以及班组下的技工(动了TeamMapper.xml文件)
 	 * @return
 	 */
-	public List<Team> selectAll(){
-		return biz.selectAll();
+	public List<Team> selectAllByType(@RequestBody String type){
+		return biz.selectAllByType(type);
 	}
 	
 	@PostMapping

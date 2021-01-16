@@ -48,7 +48,7 @@ public class ClientcarBiz {
 	 * 根据用户id修改用户名下的所属的车辆
 	 */
 	public int updateClientcar(Clientcar record) {
-		return clientcar.updateByPrimaryKey(record);
+		return clientcar.updateByPrimaryKeySelective(record);
 	}
 
 	/**
