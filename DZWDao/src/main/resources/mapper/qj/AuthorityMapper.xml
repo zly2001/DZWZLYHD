@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.accp.dao.qj.AuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Authority" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="functionId" property="functionId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    aid, positionid, functionId
+</sql>
+<insert id="insertSelective" parameterType="com.accp.entity.Authority" >
+    insert into authority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="functionId != null" >
+        functionId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="functionId != null" >
+        #{functionId,jdbcType=INTEGER},
+      </if>
+    </trim>
+</insert>
+</mapper>

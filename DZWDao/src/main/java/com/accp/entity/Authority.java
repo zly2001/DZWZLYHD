@@ -22,4 +22,12 @@ public class Authority {
 	}
 	private Integer positionid;
 	private Integer functionId;
+	public Authority(Integer aid, Integer positionid, Integer functionId) {
+		super();
+		this.aid = aid;
+		this.positionid = positionid;
+		this.functionId = functionId;
+	}
+	
+	public Authority() {};
 }
