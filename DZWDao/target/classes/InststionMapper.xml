@@ -4,10 +4,13 @@
 
 	<!-- 张来遇写的根据维修状态和车牌号查询所有维修单与维修详情和救援记录改了Inststion.java文件和InststionMapper.xml文件 -->
 	<select id="selectAllByCnoAndStatusid" resultMap="BaseResultMap">
-		SELECT * FROM `inststion`
-		<where>
+		SELECT i.* FROM `inststion` i INNER JOIN `status` s ON i.`statusid`=s.`statusid`
+		<where>			 
+			 <if test="type != null and type != ''">
+				AND s.`type`=#{type}
+			</if>
 			<if test="statusid != null and statusid != ''">
-				AND `statusid`=#{statusid}
+				AND i.`statusid`=#{statusid}
 			</if>
 			<if test="cno != null and cno != ''">
 				AND `cno`=#{cno}
@@ -22,8 +25,7 @@
 	</select>
 
 	<!-- 根据维修单号查询救援记录 -->
-	<select id="selectByWorkcardesc"
-		resultType="com.accp.entity.Workcardesc">
+	<select id="selectByWorkcardesc" resultType="com.accp.entity.Workcardesc">
 		SELECT * FROM `workcardesc` WHERE `inid`=#{0}
 	</select>
 
@@ -83,11 +85,13 @@
 		from inststion
 		where inid = #{inid,jdbcType=VARCHAR}
 	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
 		delete from
 		inststion
 		where inid = #{inid,jdbcType=VARCHAR}
 	</delete>
+	
 	<insert id="insert" parameterType="com.accp.entity.Inststion">
 		insert into inststion (inid,
 		wid, statusid,
@@ -120,6 +124,8 @@
 		#{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
 		#{column4,jdbcType=VARCHAR})
 	</insert>
+	
+	
 	<insert id="insertSelective"
 		parameterType="com.accp.entity.Inststion">
 		insert into inststion
@@ -312,8 +318,8 @@
 			<if test="yjday != null">
 				yjday = #{yjday,jdbcType=DATE},
 			</if>
-			<if test="wgday != null">
-				wgday = #{wgday,jdbcType=DATE},
+			<if test="statusid == 3">
+				wgday = NOW(),
 			</if>
 			<if test="iszn != null">
 				iszn = #{iszn,jdbcType=INTEGER},

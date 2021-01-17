@@ -24,12 +24,23 @@ import com.accp.entity.Clientcar;
 public class NjClientcarAction {
 	@Resource
 	private ClientcarBiz biz;
+	
+	@PostMapping("/selectClientcarByCno/{cno}")
+	/**
+	 * 张来遇写的根据车牌号查询车辆信息
+	 * 
+	 * @param cno
+	 * @return
+	 */
+	public Clientcar selectClientcarByCno(@PathVariable String cno) {
+		return biz.selectClientcarByCno(cno);
+	}
 
 	/**
 	 * 查询用户名下的车子
 	 */
 	@PostMapping("/queryAll/{clientno}")
-	public List<Clientcar> queryClientcarByClientno(HttpSession session,@PathVariable String clientno) {
+	public List<Clientcar> queryClientcarByClientno(HttpSession session, @PathVariable String clientno) {
 		System.err.println(clientno);
 		List<Clientcar> clientcar = biz.selectclientcar(clientno);
 		return clientcar;
@@ -39,11 +50,11 @@ public class NjClientcarAction {
 	 * 查询用户名下的车子
 	 */
 	@GetMapping
-	public List<Clientcar> queryClientcarByClientno1(HttpSession session,@PathVariable String clientno) {
+	public List<Clientcar> queryClientcarByClientno1(HttpSession session, @PathVariable String clientno) {
 		System.out.println(111);
 		return null;
 	}
-	
+
 	/**
 	 * 新增用户信息
 	 */

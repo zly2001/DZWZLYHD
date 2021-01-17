@@ -44,7 +44,7 @@ public class InststionAction {
 	 * @return
 	 */
 	public List<Inststion> selectAllByCnoAndStatusid(@RequestBody Map<String, Object> map) {
-		return biz.selectAllByCnoAndStatusid(map.get("cno").toString(), map.get("statusid").toString());
+		return biz.selectAllByCnoAndStatusid(map.get("cno").toString(), map.get("statusid").toString(), map.get("type").toString());
 	}
 	
 	@PostMapping

@@ -2,6 +2,9 @@ package com.accp.dao.nj;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.entity.Clientcar;
 
 public interface NjClientCarMapper {
@@ -28,6 +31,14 @@ public interface NjClientCarMapper {
 	 * @return
 	 */
 	int insertSelective(Clientcar record);
+	
+	/**
+	 * 张来遇写的根据车牌号查询车辆信息
+	 * @param cno
+	 * @return
+	 */
+	@Select("SELECT * FROM `clientcar` WHERE `cno`=#{cno}")
+	Clientcar selectClientcarByCno(@Param("cno") String cno);
 
 	/**
 	 * 根据用户编号查询用户名下车辆

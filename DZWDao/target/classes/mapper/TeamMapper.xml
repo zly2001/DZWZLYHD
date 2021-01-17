@@ -3,9 +3,9 @@
 <mapper namespace="com.accp.dao.TeamMapper">
 	<!-- selectAll,selectByArtisan:张来遇写的组合查询一个班组多个技工,一个技工对应一个技工星级 -->
 	<!-- 查询所有空闲中且班组里技工人数大于0的班组 -->
-	<select id="selectAll" resultMap="BaseResultMap">
+	<select id="selectAllByType" resultMap="BaseResultMap">
 		SELECT * FROM `team` t WHERE
-		`type`=13 AND (SELECT COUNT(*) FROM `artisan` a WHERE a.`tid`=t.`tid`)
+		`type`=#{type} AND (SELECT COUNT(*) FROM `artisan` a WHERE a.`tid`=t.`tid`)
 		&gt; 0
 	</select>
 
