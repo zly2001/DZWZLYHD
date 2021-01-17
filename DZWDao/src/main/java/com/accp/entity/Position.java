@@ -84,4 +84,11 @@ public class Position {
     public void setColumn4(String column4) {
         this.column4 = column4 == null ? null : column4.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Position [positionid=" + positionid + ", positionname=" + positionname + ", type=" + type + ", column1="
+				+ column1 + ", column2=" + column2 + ", column3=" + column3 + ", column4=" + column4 + ", functions="
+				+ functions + "]";
+	}
 }

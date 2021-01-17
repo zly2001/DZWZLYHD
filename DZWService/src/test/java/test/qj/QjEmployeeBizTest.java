@@ -34,6 +34,8 @@ public class QjEmployeeBizTest {
 	
 	@Test
 	public void test2() {
-		biz.selectByLogin("1003", "12345");
+		biz.selectByLogin("1001", "1001").getPosition().getFunctions().forEach(temp ->{
+			System.out.println(temp);
+		});		
 	}
 }
