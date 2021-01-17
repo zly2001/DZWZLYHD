@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,12 +35,12 @@ public class TeamAction {
 		return biz.selectByPrimaryKey(tid);
 	}
 	
-	@GetMapping("selectAll/{type}")
+	@GetMapping("selectAllByType/{type}")
 	/**
 	 * 张来遇写的用于查询所有班组以及班组下的技工(动了TeamMapper.xml文件)
 	 * @return
 	 */
-	public List<Team> selectAllByType(@RequestBody String type){
+	public List<Team> selectAllByType(@PathVariable String type){
 		return biz.selectAllByType(type);
 	}
 	

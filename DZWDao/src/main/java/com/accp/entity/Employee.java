@@ -44,15 +44,15 @@ public class Employee {
 
     private String ename;
     
+    private Position position;
+    
     public Position getPosition() {
 		return position;
 	}
 
 	public void setPosition(Position position) {
 		this.position = position;
-	}
-
-	private Position position;
+	}	
     
     public Department getDepartment() {
 		return department;
@@ -225,4 +225,24 @@ public class Employee {
     public void setEname(String ename) {
         this.ename = ename == null ? null : ename.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Employee [employeeid=" + employeeid + ", ephone=" + ephone + ", epwd=" + epwd + ", esex=" + esex
+				+ ", ecreid=" + ecreid + ", eaddress=" + eaddress + ", etrytimes=" + etrytimes + ", elaimes=" + elaimes
+				+ ", ezuant=" + ezuant + ", eyunayin=" + eyunayin + ", phone1=" + phone1 + ", email=" + email
+				+ ", deid=" + deid + ", statusid=" + statusid + ", positionid=" + positionid + ", column1=" + column1
+				+ ", column2=" + column2 + ", column3=" + column3 + ", column4=" + column4 + ", ename=" + ename
+				+ ", position=" + position + ", department=" + department + ", getPosition()=" + getPosition()
+				+ ", getDepartment()=" + getDepartment() + ", getEmployeeid()=" + getEmployeeid() + ", getEphone()="
+				+ getEphone() + ", getEpwd()=" + getEpwd() + ", getEsex()=" + getEsex() + ", getEcreid()=" + getEcreid()
+				+ ", getEaddress()=" + getEaddress() + ", getEtrytimes()=" + getEtrytimes() + ", getElaimes()="
+				+ getElaimes() + ", getEzuant()=" + getEzuant() + ", getEyunayin()=" + getEyunayin() + ", getPhone1()="
+				+ getPhone1() + ", getEmail()=" + getEmail() + ", getDeid()=" + getDeid() + ", getStatusid()="
+				+ getStatusid() + ", getPositionid()=" + getPositionid() + ", getColumn1()=" + getColumn1()
+				+ ", getColumn2()=" + getColumn2() + ", getColumn3()=" + getColumn3() + ", getColumn4()=" + getColumn4()
+				+ ", getEname()=" + getEname() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+    
 }
