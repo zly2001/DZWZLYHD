@@ -41,16 +41,13 @@
 			select="getPo" />
 	</resultMap>
 	<select id="selectAllaa" resultMap="De">
-		select * from employee where
-		ezuant = 1
+		select * from employee where ezuant = 1
 	</select>
 	<select id="getDe" resultType="com.accp.entity.Department">
-		select * from department WHERE
-		deid=#{deid}
+		select * from department WHERE deid=#{deid}
 	</select>
 	<select id="getPo" resultType="com.accp.entity.Position">
-		select * from position WHERE
-		positionid=#{positionid}
+		select * from position WHERE positionid=#{positionid}
 	</select>
 
 	<select id="getVo" resultType="com.accp.entity.EmployeeVO">
@@ -58,12 +55,10 @@
 		e.ename,e.esex,e.employeeid,e.etrytimes,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename,e.phone1,e.email
 		FROM employee AS e
 		INNER JOIN POSITION AS p
-		ON e.positionid =
-		p.positionid
+		ON e.positionid = p.positionid
 		INNER JOIN department AS d
 		ON e.deid = d.deid
-		WHERE e.ezuant
-		= 1
+		WHERE e.ezuant = 1
 	</select>
 
 	<select id="selectByename"
@@ -72,12 +67,10 @@
 		e.ename,e.esex,e.employeeid,e.etrytimes,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename
 		FROM employee AS e
 		INNER JOIN POSITION AS p
-		ON e.positionid =
-		p.positionid
+		ON e.positionid = p.positionid
 		INNER JOIN department AS d
 		ON e.deid = d.deid
-		WHERE e.ezuant
-		= 1 and e.ename like '%${ename}%'
+		WHERE e.ezuant = 1 and e.ename like '%${ename}%'
 	</select>
 
 	<select id="selectLizhi" resultType="com.accp.entity.EmployeeVO">
@@ -85,12 +78,10 @@
 		e.ename,e.esex,e.employeeid,e.etrytimes,e.elaimes,e.eyunayin,e.ecreid,e.eaddress,e.ephone,p.positionname,d.dename
 		FROM employee AS e
 		INNER JOIN POSITION AS p
-		ON e.positionid =
-		p.positionid
+		ON e.positionid = p.positionid
 		INNER JOIN department AS d
 		ON e.deid = d.deid
-		WHERE e.ezuant
-		= 0
+		WHERE e.ezuant = 0
 	</select>
 
 
@@ -118,10 +109,8 @@
 		<result column="column2" property="column2" jdbcType="VARCHAR" />
 		<result column="column3" property="column3" jdbcType="VARCHAR" />
 		<result column="column4" property="column4" jdbcType="VARCHAR" />
-		
-		<association property="position" resultMap="PositionMap" />
+		 <association property="position" resultMap="PositionMap" /> 
 	</resultMap>
-	
 	<resultMap type="com.accp.entity.Position" id="PositionMap">
 		<id column="positionid" property="positionid" />
 		<result column="positionname" property="positionname" />
@@ -141,29 +130,24 @@
 		resultType="com.accp.entity.Function">
 		select * from function where fid=#{0}
 	</select>
-	
 	<select id="queryUserWithRole" resultMap="EmployeeMap">
 		SELECT
-		*
+		e.employeeid,e.epwd,p.positionid,p.positionname,f.fid,f.fcode,f.fname,f.fpid,f.createdate
 		FROM employee AS e
 		INNER JOIN POSITION AS p
-		ON e.positionid =
-		p.positionid
+		ON e.positionid = p.positionid
 		INNER JOIN authority AS a
 		ON a.positionid = p.positionid
 		INNER JOIN FUNCTION AS f
 		ON a.functionId = f.fid
-		WHERE e.employeeid =
-		#{employeeid} AND e.epwd = #{epwd}
+		WHERE e.employeeid = #{employeeid} AND e.epwd = #{epwd}
 	</select>
 
 
 	<sql id="Base_Column_List">
-		employeeid, ephone, epwd, esex, ecreid, eaddress,
-		etrytimes, elaimes, ezuant,
+		employeeid, ephone, epwd, esex, ecreid, eaddress, etrytimes, elaimes, ezuant,
 		eyunayin,
-		phone1, email, deid, statusid,
-		positionid, column1, column2, column3, column4
+		phone1, email, deid, statusid, positionid, column1, column2, column3, column4
 	</sql>
 	<sql id="Blob_Column_List">
 		ename
@@ -178,34 +162,26 @@
 		where employeeid = #{employeeid,jdbcType=VARCHAR}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from
-		employee
+		delete from employee
 		where employeeid = #{employeeid,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="com.accp.entity.Employee">
-		insert into employee
-		(employeeid, ephone, epwd,
+		insert into employee (employeeid, ephone, epwd,
 		esex, ecreid, eaddress,
-		etrytimes, elaimes,
-		ezuant,
+		etrytimes, elaimes, ezuant,
 		eyunayin, phone1, email,
 		deid, statusid, positionid,
-		column1,
-		column2, column3,
+		column1, column2, column3,
 		column4, ename)
-		values
-		(#{employeeid,jdbcType=VARCHAR}, #{ephone,jdbcType=VARCHAR},
+		values (#{employeeid,jdbcType=VARCHAR}, #{ephone,jdbcType=VARCHAR},
 		#{epwd,jdbcType=VARCHAR},
-		#{esex,jdbcType=INTEGER},
-		#{ecreid,jdbcType=VARCHAR}, #{eaddress,jdbcType=VARCHAR},
+		#{esex,jdbcType=INTEGER}, #{ecreid,jdbcType=VARCHAR}, #{eaddress,jdbcType=VARCHAR},
 		#{etrytimes,jdbcType=DATE}, #{elaimes,jdbcType=DATE},
 		#{ezuant,jdbcType=INTEGER},
-		#{eyunayin,jdbcType=VARCHAR},
-		#{phone1,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{eyunayin,jdbcType=VARCHAR}, #{phone1,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
 		#{deid,jdbcType=INTEGER}, #{statusid,jdbcType=INTEGER},
 		#{positionid,jdbcType=INTEGER},
-		#{column1,jdbcType=VARCHAR},
-		#{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
+		#{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, #{column3,jdbcType=VARCHAR},
 		#{column4,jdbcType=VARCHAR}, #{ename,jdbcType=LONGVARCHAR})
 	</insert>
 	<insert id="insertSelective"
@@ -407,28 +383,22 @@
 		epwd = #{epwd,jdbcType=VARCHAR},
 		esex = #{esex,jdbcType=INTEGER},
 		ecreid = #{ecreid,jdbcType=VARCHAR},
-		eaddress =
-		#{eaddress,jdbcType=VARCHAR},
+		eaddress = #{eaddress,jdbcType=VARCHAR},
 		etrytimes = #{etrytimes,jdbcType=DATE},
 		elaimes = #{elaimes,jdbcType=DATE},
-		ezuant =
-		#{ezuant,jdbcType=INTEGER},
+		ezuant = #{ezuant,jdbcType=INTEGER},
 		eyunayin = #{eyunayin,jdbcType=VARCHAR},
 		phone1 = #{phone1,jdbcType=VARCHAR},
 		email = #{email,jdbcType=VARCHAR},
 		deid = #{deid,jdbcType=INTEGER},
-		statusid =
-		#{statusid,jdbcType=INTEGER},
-		positionid =
-		#{positionid,jdbcType=INTEGER},
+		statusid = #{statusid,jdbcType=INTEGER},
+		positionid = #{positionid,jdbcType=INTEGER},
 		column1 = #{column1,jdbcType=VARCHAR},
 		column2 = #{column2,jdbcType=VARCHAR},
-		column3 =
-		#{column3,jdbcType=VARCHAR},
+		column3 = #{column3,jdbcType=VARCHAR},
 		column4 = #{column4,jdbcType=VARCHAR},
 		ename = #{ename,jdbcType=LONGVARCHAR}
-		where employeeid =
-		#{employeeid,jdbcType=VARCHAR}
+		where employeeid = #{employeeid,jdbcType=VARCHAR}
 	</update>
 	<update id="updateByPrimaryKey"
 		parameterType="com.accp.entity.Employee">
@@ -437,24 +407,19 @@
 		epwd = #{epwd,jdbcType=VARCHAR},
 		esex = #{esex,jdbcType=INTEGER},
 		ecreid = #{ecreid,jdbcType=VARCHAR},
-		eaddress =
-		#{eaddress,jdbcType=VARCHAR},
+		eaddress = #{eaddress,jdbcType=VARCHAR},
 		etrytimes = #{etrytimes,jdbcType=DATE},
 		elaimes = #{elaimes,jdbcType=DATE},
-		ezuant =
-		#{ezuant,jdbcType=INTEGER},
+		ezuant = #{ezuant,jdbcType=INTEGER},
 		eyunayin = #{eyunayin,jdbcType=VARCHAR},
 		phone1 = #{phone1,jdbcType=VARCHAR},
 		email = #{email,jdbcType=VARCHAR},
 		deid = #{deid,jdbcType=INTEGER},
-		statusid =
-		#{statusid,jdbcType=INTEGER},
-		positionid =
-		#{positionid,jdbcType=INTEGER},
+		statusid = #{statusid,jdbcType=INTEGER},
+		positionid = #{positionid,jdbcType=INTEGER},
 		column1 = #{column1,jdbcType=VARCHAR},
 		column2 = #{column2,jdbcType=VARCHAR},
-		column3 =
-		#{column3,jdbcType=VARCHAR},
+		column3 = #{column3,jdbcType=VARCHAR},
 		column4 = #{column4,jdbcType=VARCHAR}
 		where employeeid = #{employeeid,jdbcType=VARCHAR}
 	</update>

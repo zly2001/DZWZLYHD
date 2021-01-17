@@ -1,5 +1,7 @@
 package com.accp.biz.zly;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -31,6 +33,14 @@ public class CashiersBiz {
 	 */
 	public Cashiers selectByPrimaryKey(String casid) {
 		return dao.selectByPrimaryKey(casid);
+	}
+	
+	/**
+	 * 查询所有收银
+	 * @return
+	 */
+	public List<Cashiers> selecAllByCashiers() {
+		return dao.selecAllByCashiers();
 	}
 	
 	

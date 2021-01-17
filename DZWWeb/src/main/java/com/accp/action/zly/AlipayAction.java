@@ -1,12 +1,14 @@
 package com.accp.action.zly;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,14 +34,23 @@ public class AlipayAction {
 	 */
 	@RequestMapping("insert")
 	public String insertSelective(HttpSession session, Cashiers Cashiers) {		
-		String url="";
+		String url="http://127.0.0.1:8020/DZWZLYUI/html/index.html";
 		if (biz.insertSelective((Cashiers)session.getAttribute("Cashiers")) > 0) {
-			url="";
+			url="http://127.0.0.1:8020/DZWZLYUI/html/index.html";
 		}
 		else {
 			url="";
 		}
 		return "";
+	}
+	
+	@GetMapping
+	/**
+	 * 查询所有收银
+	 * @return
+	 */
+	public List<Cashiers> selecAllByCashiers() {
+		return biz.selecAllByCashiers();
 	}
 
 	@RequestMapping("SXZFZLY")

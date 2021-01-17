@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.lp.shoping" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Shop" >
+    <id column="shopid" property="shopid" jdbcType="INTEGER" />
+    <result column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="firmid" property="firmid" jdbcType="INTEGER" />
+    <result column="shopname" property="shopname" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="stockprice" property="stockprice" jdbcType="REAL" />
+    <result column="sellingprice" property="sellingprice" jdbcType="REAL" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="agreement" property="agreement" jdbcType="REAL" />
+    <result column="numbering" property="numbering" jdbcType="VARCHAR" />
+    <result column="column1" property="column1" jdbcType="VARCHAR" />
+    <result column="column2" property="column2" jdbcType="VARCHAR" />
+    <result column="column3" property="column3" jdbcType="VARCHAR" />
+    <result column="column4" property="column4" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.accp.entity.Shop" extends="BaseResultMap" >
+    <result column="image" property="image" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shopid, goodid, firmid, shopname, weight, stockprice, sellingprice, quantity, agreement, 
+    numbering, column1, column2, column3, column4
+  </sql>
+  <sql id="Blob_Column_List" >
+    image
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shop
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shop
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Shop" >
+    insert into shop (shopid, goodid, firmid, 
+      shopname, weight, stockprice, 
+      sellingprice, quantity, agreement, 
+      numbering, column1, column2, 
+      column3, column4, image
+      )
+    values (#{shopid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{firmid,jdbcType=INTEGER}, 
+      #{shopname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}, #{stockprice,jdbcType=REAL}, 
+      #{sellingprice,jdbcType=REAL}, #{quantity,jdbcType=INTEGER}, #{agreement,jdbcType=REAL}, 
+      #{numbering,jdbcType=VARCHAR}, #{column1,jdbcType=VARCHAR}, #{column2,jdbcType=VARCHAR}, 
+      #{column3,jdbcType=VARCHAR}, #{column4,jdbcType=VARCHAR}, #{image,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Shop" >
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shopid != null" >
+        shopid,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="firmid != null" >
+        firmid,
+      </if>
+      <if test="shopname != null" >
+        shopname,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="stockprice != null" >
+        stockprice,
+      </if>
+      <if test="sellingprice != null" >
+        sellingprice,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="agreement != null" >
+        agreement,
+      </if>
+      <if test="numbering != null" >
+        numbering,
+      </if>
+      <if test="column1 != null" >
+        column1,
+      </if>
+      <if test="column2 != null" >
+        column2,
+      </if>
+      <if test="column3 != null" >
+        column3,
+      </if>
+      <if test="column4 != null" >
+        column4,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shopid != null" >
+        #{shopid,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="firmid != null" >
+        #{firmid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null" >
+        #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="stockprice != null" >
+        #{stockprice,jdbcType=REAL},
+      </if>
+      <if test="sellingprice != null" >
+        #{sellingprice,jdbcType=REAL},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="agreement != null" >
+        #{agreement,jdbcType=REAL},
+      </if>
+      <if test="numbering != null" >
+        #{numbering,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Shop" >
+    update shop
+    <set >
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="firmid != null" >
+        firmid = #{firmid,jdbcType=INTEGER},
+      </if>
+      <if test="shopname != null" >
+        shopname = #{shopname,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="stockprice != null" >
+        stockprice = #{stockprice,jdbcType=REAL},
+      </if>
+      <if test="sellingprice != null" >
+        sellingprice = #{sellingprice,jdbcType=REAL},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="agreement != null" >
+        agreement = #{agreement,jdbcType=REAL},
+      </if>
+      <if test="numbering != null" >
+        numbering = #{numbering,jdbcType=VARCHAR},
+      </if>
+      <if test="column1 != null" >
+        column1 = #{column1,jdbcType=VARCHAR},
+      </if>
+      <if test="column2 != null" >
+        column2 = #{column2,jdbcType=VARCHAR},
+      </if>
+      <if test="column3 != null" >
+        column3 = #{column3,jdbcType=VARCHAR},
+      </if>
+      <if test="column4 != null" >
+        column4 = #{column4,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.accp.entity.Shop" >
+    update shop
+    set goodid = #{goodid,jdbcType=INTEGER},
+      firmid = #{firmid,jdbcType=INTEGER},
+      shopname = #{shopname,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      stockprice = #{stockprice,jdbcType=REAL},
+      sellingprice = #{sellingprice,jdbcType=REAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      agreement = #{agreement,jdbcType=REAL},
+      numbering = #{numbering,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR},
+      image = #{image,jdbcType=LONGVARCHAR}
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Shop" >
+    update shop
+    set goodid = #{goodid,jdbcType=INTEGER},
+      firmid = #{firmid,jdbcType=INTEGER},
+      shopname = #{shopname,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      stockprice = #{stockprice,jdbcType=REAL},
+      sellingprice = #{sellingprice,jdbcType=REAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      agreement = #{agreement,jdbcType=REAL},
+      numbering = #{numbering,jdbcType=VARCHAR},
+      column1 = #{column1,jdbcType=VARCHAR},
+      column2 = #{column2,jdbcType=VARCHAR},
+      column3 = #{column3,jdbcType=VARCHAR},
+      column4 = #{column4,jdbcType=VARCHAR}
+    where shopid = #{shopid,jdbcType=INTEGER}
+  </update>
+</mapper>

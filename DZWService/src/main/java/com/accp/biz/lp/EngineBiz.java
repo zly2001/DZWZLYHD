@@ -13,11 +13,13 @@ import com.accp.dao.lp.Engine;
 import com.accp.dao.lp.FIRM;
 import com.accp.dao.lp.ITEMS;
 import com.accp.dao.lp.Motorcycle;
+import com.accp.dao.lp.shoping;
 import com.accp.entity.Brand;
 import com.accp.entity.Firm;
 import com.accp.entity.Goodstype;
 import com.accp.entity.Items;
 import com.accp.entity.lp.ItemsVO;
+import com.accp.entity.Shop;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -39,6 +41,9 @@ public class EngineBiz {
 	
 	@Resource
 	private ITEMS dao4;
+	
+	@Resource
+	private shoping dao5;
 	
 	
 	//查询
@@ -69,6 +74,11 @@ public class EngineBiz {
 	public PageInfo<ItemsVO> SelectAll4(Integer p,String bh){
 		PageHelper.startPage(p, 5);
 		return new PageInfo<ItemsVO>(dao3.selectAll2(bh));
+	}
+	
+	public PageInfo<Shop> SelectAll7(Integer p,String name){
+		PageHelper.startPage(p, 5);
+		return new PageInfo<Shop>(dao5.selectAll(name));
 	}
 	
 	
@@ -117,6 +127,10 @@ public class EngineBiz {
 	
 	public int addItems(Items i) {
 		return dao4.insert(i);
+	}
+	
+	public int addShop(Shop s) {
+		return dao5.insert(s);
 	}
 
 
