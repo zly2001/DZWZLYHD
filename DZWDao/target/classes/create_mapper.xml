@@ -34,6 +34,6 @@
 		<!-- mybatis-generator:generate -->         
 		<!--表-->
 		
-		<table tableName="function" domainObjectName="Function" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="authority" domainObjectName="Authority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>  
 </generatorConfiguration>  

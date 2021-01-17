@@ -3,7 +3,6 @@ package com.accp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Position {
     private Integer positionid;
 
@@ -20,8 +19,19 @@ public class Position {
     private String column4;
     
     private List<Function> functions; 
+    
+    private List<Authority> Authority;
 
-    public List<Function> getFunctions() {
+   
+	public List<Authority> getAuthority() {
+		return Authority;
+	}
+
+	public void setAuthority(List<Authority> authority) {
+		Authority = authority;
+	}
+
+	public List<Function> getFunctions() {
 		return functions;
 	}
 

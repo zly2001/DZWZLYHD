@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.AuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.entity.Authority" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="positionid" property="positionid" jdbcType="INTEGER" />
+    <result column="functionId" property="functionid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, positionid, functionId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from authority
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from authority
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.entity.Authority" >
+    insert into authority (aid, positionid, functionId
+      )
+    values (#{aid,jdbcType=INTEGER}, #{positionid,jdbcType=INTEGER}, #{functionid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.entity.Authority" >
+    insert into authority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="positionid != null" >
+        positionid,
+      </if>
+      <if test="functionid != null" >
+        functionId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="positionid != null" >
+        #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="functionid != null" >
+        #{functionid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.entity.Authority" >
+    update authority
+    <set >
+      <if test="positionid != null" >
+        positionid = #{positionid,jdbcType=INTEGER},
+      </if>
+      <if test="functionid != null" >
+        functionId = #{functionid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.entity.Authority" >
+    update authority
+    set positionid = #{positionid,jdbcType=INTEGER},
+      functionId = #{functionid,jdbcType=INTEGER}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>
